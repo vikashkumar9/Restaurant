@@ -1,9 +1,12 @@
-import Image from "next/image";
-import Banner from "@/components/banner/Banner";
+"use client"
+import Login from "./login/page";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Banner />  
+    <main >
+      <div className="bg-[url('/loginbg.jpeg')] bg-cover bg-center h-screen flex items-center justify-center">
+
+      <Login/>
+      </div>
       </main>
   );
 }

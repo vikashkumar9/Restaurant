@@ -1,15 +1,24 @@
+"use client"
 import React from "react";
-import style from "./ui.module.css";
 
-const Input = ({ type, placeholder, value, onChange }) => {
+const Input = ({ type, placeholder, value, onChange,required = false,label  }) => {
   return (
+    <div className="mb-4">
+    {label && (
+      <label htmlFor={label} className="block mb-2 text-sm font-medium text-black">
+        {label}
+      </label>
+    )}
     <input
       type={type}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className={style.input_field}
+      required={required}
+      className="w-full px-3 py-2 border-b border-gray-300 focus:border-blue-500 focus:shadow-lg focus:outline-none bg-transparent text-black"
+
     />
+    </div>
   );
 };
 
