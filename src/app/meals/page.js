@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import MealCard from '@/components/MealCard/MealCard';
 import Link from 'next/link';
-
+import Carousel from '@/components/carosel/js';
 const Meals = () => {
   const meals = [
     {
@@ -95,13 +95,15 @@ const Meals = () => {
 
   return (
     <div>
-      <Head>
+        <Head>
         <title>Meal Cards</title>
         <meta name="description" content="Responsive meal cards using Next.js and Tailwind CSS" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="p-8 bg-gray-100 min-h-screen">
+      <main className="p-2 bg-gray-100 min-h-screen">
         <h1 className="text-3xl font-bold  text-gray-800 text-center mb-8">Our Delicious Meals</h1>
+        <Carousel/>
+    
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {meals.map((meal, index) => (
             <Link key={meal.id} href={`/meals/${meal.id}`} >
