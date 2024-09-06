@@ -33,7 +33,8 @@ const Meal = () => {
               <p className="text-2xl font-bold text-blue-600 mt-4">${meal.price}</p>
               <p className="text-gray-700 mt-4">{meal.description}</p>
               <div className="mt-6 flex justify-between">
-                <Link href="/cart" >               <Button  className="bg-blue-500 text-whit  hover:bg-blue-600 focus:outline-none ">Add to Cart
+                <Link href="/cart" >               
+                `<Button  className="bg-blue-500 text-whit  hover:bg-blue-600 focus:outline-none ">Add to Cart
                 </Button></Link>
  
                 <Link href="/meals">
