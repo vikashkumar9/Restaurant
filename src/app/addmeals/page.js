@@ -22,21 +22,33 @@ const AddMeal = () => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log({
-      mealName,
-      category,
-      description,
-      price,
-      selectedFile
-    })
-    // Clear the form
+    const imagedata = new FormData();
+    imagedata.set("file", selectedFile);
+    const result = fetch("/api/uploadimage", {
+      method: "POST",
+      body: imagedata,
+    });
+
+     await fetch("/api/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: mealName,
+        description: description,
+        price: price,
+        category: category,
+        image: selectedFile.name,
+      }),
+    });
     clearForm();
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+    <div className="flex items-center justify-center min-h-screen px-4">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-sm bg-white shadow-lg rounded-lg p-6 space-y-4"

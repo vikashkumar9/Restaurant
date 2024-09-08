@@ -1,14 +1,12 @@
-"use client"
-
 import React, { useCallback, useEffect, useRef } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-
 import {
   NextButton,
   PrevButton,
   usePrevNextButtons
 } from './EmblaCarouselArrowButtons'
 import { DotButton, useDotButton } from './EmblaCarouselDotButton'
+import Link from 'next/link'
 
 const TWEEN_FACTOR_BASE = 0.84
 
@@ -17,6 +15,7 @@ const numberWithinRange = (number, min, max) =>
 
 const EmblaCarousel = (props) => {
   const { slides, options } = props
+  console.log("slides",slides)
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const tweenFactor = useRef(0)
 
@@ -84,17 +83,21 @@ const EmblaCarousel = (props) => {
   }, [emblaApi, tweenOpacity])
 
   return (
-    <div className="embla">
+    <div className="embla ">
       <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
-          {slides.map((index) => (
-            <div className="embla__slide" key={index}>
+        <div className="embla__container ">
+          {slides.map((val,index) => (
+            
+            
+            <Link key={val.id} href={`/meals/${val.id}`} className="embla__slide">
+
               <img
-                className="embla__slide__img"
-                src={`https://picsum.photos/600/350?v=${index}`}
+                className="embla__slide__img "
+                src={val.image}
                 alt="Your alt text"
               />
-            </div>
+              </Link>
+          
           ))}
         </div>
       </div>

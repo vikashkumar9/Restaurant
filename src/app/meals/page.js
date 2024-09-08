@@ -3,31 +3,51 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import MealCard from '@/components/MealCard/MealCard';
 import Link from 'next/link';
-import { getmeals } from '@/components/apiData/datafn';
+import Carousel from '@/components/carosel/js';
+
+export async function getmeals() {
+  const response = await fetch('/api/products');
+  const data = await response.json();
+  return data;
+}
 const Meals = () => {
   const [products, setProducts] = useState([]);
 
   const fetchData = async () => {
       const data = await getmeals();
       setProducts(data.result);
-      console.log('data', data);
+      console.log("meals data ",data.result)
   };
   useEffect(() => {
     fetchData();
   }, []);
+
+  const slides = products.map((item) => ({
+    image: item.image,
+    id:item._id
+  
+  }));
+  
+  console.log("image",slides);
+  
   return (
+    
     <div>
+       <curr/>
         <Head>
         <title>Meal Cards</title>
         <meta name="description" content="Responsive meal cards using Next.js and Tailwind CSS" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="p-8 bg-gray-100 min-h-screen">
+    
+      <main className="p-8 min-h-screen">
         <h1 className="text-3xl font-bold  text-gray-800 text-center mb-8">Our Delicious Meals</h1>
+        <Carousel slides={slides}/>
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+       
           {products.length > 0 ? (
             products.map((meal) => (
-              <Link key={meal.id} href={`/meals/${meal.id}`}>
+              <Link key={meal.id} href={`/meals/${meal._id}`}>
                 <MealCard
                   image={meal.image}
                   category={meal.category}

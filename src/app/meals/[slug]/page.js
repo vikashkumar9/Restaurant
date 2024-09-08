@@ -1,40 +1,50 @@
 "use client"
-import { useParams } from 'next/navigation'
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import Button from '@/components/ui/Button';
-const Meal = () => {
-    const router = useParams();
-    const { id } = router.slug;
-  
-    const meal = {
-      image: '/bannerimg1.jpg',
-      name: 'Spring Rolls',
-      category: 'Appetizer',
-      price: '5.99',
-      description: 'Delicious spring rolls with fresh vegetables and a savory dipping sauce.',
+import { useRouter } from "next/navigation";
+import Image from 'next/image';
+
+export async function getmeals(id) {
+  const response = await fetch(`/api/products/${id}`);
+  const data = await response.json();
+  return data;
+}
+const Meal = ({ params }) => {
+  // const router = useRouter();
+console.log("id",params.slug)
+    const [product, setProduct] = useState([]);
+
+    const fetchData = async () => {
+        const data = await getmeals(params.slug);
+        setProduct(data.result);
+        console.log(data.result)
     };
-  
+    useEffect(() => {
+      fetchData();
+    }, []);
     return (
       <div>
         <Head>
-          <title>{meal.name}</title>
-          <meta name="description" content={`Details about ${meal.name}`} />
+          <title>{product.name}</title>
+          <meta name="description" content={`Details about ${product.name}`} />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className="p-8 bg-gray-100 min-h-screen">
+        <main className="p-8  min-h-screen">
           <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
             <div className="relative">
-              <img src={meal.image} alt={meal.name} className="w-full h-full object-cover" />
+              <Image src={"/"+product.image} alt={product.name} height={400} width={400} 
+              // className="w-full h-full object-cover" 
+              />
             </div>
             <div className="p-6">
-              <h1 className="text-3xl font-bold text-gray-800">{meal.name}</h1>
-              <p className="text-sm text-gray-600 mt-1">{meal.category}</p>
-              <p className="text-2xl font-bold text-blue-600 mt-4">${meal.price}</p>
-              <p className="text-gray-700 mt-4">{meal.description}</p>
+              <h1 className="text-3xl font-bold text-gray-800">{product.name}</h1>
+              <p className="text-2xl font-bold text-blue-600 mt-4">${product.price}</p>
+              <p className="text-gray-700 mt-4">{product.description}</p>
               <div className="mt-6 flex justify-between">
                 <Link href="/cart" >               
-                `<Button  className="bg-blue-500 text-whit  hover:bg-blue-600 focus:outline-none ">Add to Cart
+                <Button  className="bg-blue-500 text-whit  hover:bg-blue-600 focus:outline-none ">Add to Cart
                 </Button></Link>
  
                 <Link href="/meals">
