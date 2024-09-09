@@ -14,9 +14,12 @@ export const Product =
   mongoose.models.Product || mongoose.model("Product", productSchema);
 
 const loginSchema = new mongoose.Schema({
-  username: String,
+  name: String,
   email: String,
   password: String,
+  location:String,
+  city:String,
+  contact:String
 });
 
 export const Login =

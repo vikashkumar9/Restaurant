@@ -3,16 +3,40 @@ import React, { useState } from "react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import Link from 'next/link'
-
+import { useRouter } from 'next/router'
 const Login = () => {
-  const [username, setUsername] = useState("");
+
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [location, setLocation] = useState("");
+  const [city, setCity] = useState("");
+  const [contact, setContact] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log("Login submitted with:", { username, email, password });
+  let response=  await fetch("/api/login", {
+      method: "POST",
+      headers: {  
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email:email, 
+        password:password ,
+        location:location,
+        city:city,
+        contact:contact
+      }),
+    });
+  response = await response.json()
+  if(response.success){
+    console.log("response",response)
+    const {result} =response;
+    delete result.password;
+    localStorage.setItem("restaurant_user", JSON.stringify(response.result));
+   
+  }
   };
 
   return (
@@ -25,10 +49,10 @@ const Login = () => {
           Registration
         </h2>
         <Input
-          label="Enter username"
+          label="Enter Restaurent name"
           type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           required
         />
         <Input
@@ -43,6 +67,27 @@ const Login = () => {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+           <Input
+          label="Location"
+          type="text"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          required
+        />
+           <Input
+          label="City"
+          type="text"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          required
+        />
+           <Input
+          label="Contact no"
+          type="number"
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
           required
         />
         <Button

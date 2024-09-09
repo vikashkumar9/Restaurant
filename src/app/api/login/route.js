@@ -34,13 +34,13 @@ export async function POST(req) {
     await connectToDatabase();
     
     const body = await req.json();
-    const { username, email, password } = body;
+    const { name, email, password,location,city,contact } = body;
     
-    if (!username || !email || !password) {
+    if (!name || !email || !password || !location || !city || !contact ) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const login = new Login({ username, email, password });
+    const login = new Login({ name, email, password,location,city,contact  });
     const result = await login.save();
     
     return NextResponse.json({ result, success: true });
