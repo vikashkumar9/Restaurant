@@ -3,79 +3,44 @@ import mongoose from "mongoose";
 import { Login } from "@/lib/models/products";
 import { loginstr } from "@/lib/models/db";
 
-let isConnected = false;
-
-// Connect to the database
-async function connectToDatabase() {
-  if (isConnected) return;
-  
-  try {
-    await mongoose.connect(loginstr, { useNewUrlParser: true, useUnifiedTopology: true });
-    isConnected = true;
-  } catch (error) {
-    console.error("Database connection error:", error);
-    throw new Error("Database connection failed");
-  }
-}
-
 export async function GET(req) {
   try {
-    await connectToDatabase();
+    await mongoose.connect(loginstr);
     const result = await Login.find();
     return NextResponse.json(result);
   } catch (error) {
-    console.error("Error fetching data:", error);
-    return NextResponse.json({ error: "Error fetching data" }, { status: 500 });
+    console.error("GET request error:", error);
+    return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });
   }
 }
 
 export async function POST(req) {
+  let result;
+  let success = false;
+  
   try {
-    await connectToDatabase();
-    
     const body = await req.json();
-    const { name, email, password,location,city,contact } = body;
-    
-    if (!name || !email || !password || !location || !city || !contact ) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    await mongoose.connect(loginstr);
+
+    if (body.login) {
+      // Login case
+      result = await Login.findOne({ email: body.email, password: body.password });
+      if (result) {
+        success = true;
+      }
+    } else {
+      // Registration case
+      const { name, email, password, location, city, contact } = body;
+      const login = new Login({
+        name, email, password, location, city, contact
+      });
+      result = await login.save();
+      success = true;
     }
 
-    const login = new Login({ name, email, password,location,city,contact  });
-    const result = await login.save();
-    
-    return NextResponse.json({ result, success: true });
+    return NextResponse.json({ result, success });
   } catch (error) {
-    console.error("Error saving data:", error);
-    return NextResponse.json({ error: "Error saving data" }, { status: 500 });
+    console.error("POST request error:", error);
+    return NextResponse.json({ error: "Failed to process request" }, { status: 500 });
   }
 }
-
-
-// import { NextResponse } from "next/server";
-// import { loginstr } from "@/lib/db";
-// import mongoose from "mongoose";￼
-
-// import { Login } from "@/lib/model/products";
-
-// export async function GET(req, res) {
-//   await mongoose.connect(loginstr);
-//   const result = await Login.find();
-//   return NextResponse.json(result);
-// }
-
-// export async function POST(req, res) {
-//   const body = await req.json();
-
-//   const { username, email, password } = body;
-//   console.log(body);
-
-//   await mongoose.connect(loginstr);
-//   const login = new Login({
-//     username: username,
-//     email: email,
-//     password: password,
-//   });
-//   const result = await login.save();
-
-//   return NextResponse.json({ result, success: true });
-// }

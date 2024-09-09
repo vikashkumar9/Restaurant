@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/header";
-import Sidebar from "@/components/sidebar/Sidebar";
+import Footer from "@/components/Footer/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -21,7 +21,7 @@ export default function RootLayout(
       <Header/>
     
         {children}</body>
-        
+        <Footer/>
     </html>
   );
 }

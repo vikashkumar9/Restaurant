@@ -2,41 +2,53 @@
 import React, { useState } from "react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-const Login = () => {
+import Link from 'next/link';
+import { useRouter } from 'next/navigation'; 
 
+const Registration = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
   const [contact, setContact] = useState("");
+  const [error, setError] = useState(""); 
+  const router = useRouter(); 
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  let response=  await fetch("/api/login", {
-      method: "POST",
-      headers: {  
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        email:email, 
-        password:password ,
-        location:location,
-        city:city,
-        contact:contact
-      }),
-    });
-  response = await response.json()
-  if(response.success){
-    console.log("response",response)
-    const {result} =response;
-    delete result.password;
-    localStorage.setItem("restaurant_user", JSON.stringify(response.result));
-   
-  }
+
+    try {
+      let response = await fetch("/api/login", { 
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          location,
+          city,
+          contact,
+        }),
+      });
+
+      response = await response.json();
+
+      if (response.success) {
+        const { result } = response;
+        delete result.password;
+        localStorage.setItem("restaurant_user", JSON.stringify(result));
+        router.push('/');
+         // Redirect to home or another page after registration
+      } else {
+        setError(response.message || "Registration failed"); // Handle error message
+      }
+    } catch (err) {
+      setError("An error occurred"); // Handle fetch error
+      console.error(err);
+    }
   };
 
   return (
@@ -48,8 +60,9 @@ const Login = () => {
         <h2 className="mb-4 text-2xl font-bold text-center text-black">
           Registration
         </h2>
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>} 
         <Input
-          label="Enter Restaurent name"
+          label="Enter Restaurant Name"
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -69,23 +82,23 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-           <Input
+        <Input
           label="Location"
           type="text"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
           required
         />
-           <Input
+        <Input
           label="City"
           type="text"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           required
         />
-           <Input
-          label="Contact no"
-          type="number"
+        <Input
+          label="Contact No"
+          type="tel" 
           value={contact}
           onChange={(e) => setContact(e.target.value)}
           required
@@ -98,11 +111,12 @@ const Login = () => {
         </Button>
         <div className="flex justify-between mt-4">
           <p className="text-black">
-            Do you have an account?{" "}
-            <Link href="/login">
-            <span className="text-yellow-500 cursor-pointer">
-              Login
-            </span></Link>
+            Already have an restaurent?{" "}
+            <Link href="/restaurent/login">
+              <span className="text-yellow-500 cursor-pointer">
+                Login
+              </span>
+            </Link>
           </p>
         </div>
       </form>
@@ -110,4 +124,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Registration;
