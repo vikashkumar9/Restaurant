@@ -3,7 +3,7 @@ import { connectionstr } from "@/lib/models/db";
 import mongoose from "mongoose";
 import { Product } from "@/lib/models/products";
 
-// Helper function to connect to the database only once
+
 async function connectToDB() {
   if (mongoose.connection.readyState === 0) {
     await mongoose.connect(connectionstr, {
@@ -13,7 +13,7 @@ async function connectToDB() {
   }
 }
 
-// GET: Fetch a single product by ID
+
 export async function GET(req, content) {
   const productId = content.params.id;
 

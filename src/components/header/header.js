@@ -8,7 +8,6 @@ const Header = () => {
   const [user, setUser] = useState(null);
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname);
 
   useEffect(() => {
     const userdata = localStorage.getItem("restaurant_user");

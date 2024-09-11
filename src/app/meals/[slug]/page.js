@@ -35,7 +35,7 @@ console.log("id",params.slug)
           <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
             <div className="relative">
               <Image src={"/"+product.image} alt={product.name} height={400} width={400} 
-              // className="w-full h-full object-cover" 
+              className=" object-cover" 
               />
             </div>
             <div className="p-6">

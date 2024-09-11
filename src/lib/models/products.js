@@ -2,12 +2,14 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
+  restoid:mongoose.Schema.Types.ObjectId,
   name: String,
   price: Number,
   description: String,
   image: String,
   category: String,
   quantity: Number,
+
 });
 
 export const Product =

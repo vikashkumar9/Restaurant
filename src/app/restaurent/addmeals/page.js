@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Button from "@/components/ui/Button";
 import MealForm from '@/components/mealsform/MealForm'
 
@@ -9,7 +9,7 @@ const AddMeal = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [restoid, setRestoId] = useState(null);
   const clearForm = () => {
     setMealName("");
     setCategory("");
@@ -17,6 +17,15 @@ const AddMeal = () => {
     setPrice("");
     setSelectedFile(null);
   };
+  
+
+useEffect(() => {
+  const userdata = JSON.parse(localStorage.getItem("restaurant_user"));
+  if (userdata) {
+    setRestoId(userdata._id);
+  }
+}, []);
+
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -30,7 +39,8 @@ const AddMeal = () => {
       method: "POST",
       body: imagedata,
     });
-
+   
+ 
      await fetch("/api/products", {
       method: "POST",
       headers: {
@@ -42,6 +52,7 @@ const AddMeal = () => {
         price: price,
         category: category,
         image: selectedFile.name,
+        restoid
       }),
     });
     clearForm();

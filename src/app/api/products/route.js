@@ -31,8 +31,8 @@ export async function GET(req, res) {
 export async function POST(req, res) {
   try {
     const body = await req.json();
-    const { name, price, image, description, category } = body;
-
+    const { name, price, image, description, category,restoid } = body;
+   console.log(body)
     // Input validation
     if (!name || !price || !description || !image || !category) {
       return NextResponse.json(
@@ -50,6 +50,7 @@ export async function POST(req, res) {
       image,
       category,
       quantity: 1,
+      restoid,
     });
 
     const result = await product.save();
