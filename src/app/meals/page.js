@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Carousel from '@/components/carosel/js';
 
 export async function getmeals() {
-  const response = await fetch('/api/products');
+  const response = await fetch('/api/meals');
   const data = await response.json();
   return data;
 }

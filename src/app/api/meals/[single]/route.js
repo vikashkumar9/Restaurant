@@ -15,12 +15,12 @@ async function connectToDB() {
 
 
 export async function GET(req, content) {
-  const productId = content.params.id;
+  const productId = content.params.single;
 
   try {
     await connectToDB();
   
-    const result = await Product.find({restoid : productId})
+    const result = await Product.findById(productId);
     if (!result) {
       return NextResponse.json({ message: "Product not found" }, { status: 404 });
     }
@@ -31,25 +31,7 @@ export async function GET(req, content) {
   }
 }
 
-// PUT: Update a product by ID
-export async function PUT(req, content) {
-  const productId = content.params.id;
 
-  try {
-    const body = await req.json();
-    await connectToDB();
-
-    const result = await Product.findByIdAndUpdate(productId, body, { new: true });
-
-    if (!result) {
-      return NextResponse.json({ message: "Product not found" }, { status: 404 });
-    }
-
-    return NextResponse.json({ result }, { status: 200 });
-  } catch (error) {
-    return NextResponse.json({ message: "Failed to update product", error }, { status: 500 });
-  }
-}
 
 // DELETE: Remove a product by ID
 export async function DELETE(req, content) {

@@ -5,7 +5,7 @@ import { Product } from "@/lib/models/products";
 
 let isConnected = false;
 
-// Connect to the database
+
 async function connectToDatabase() {
   if (isConnected) return;
   
@@ -18,15 +18,15 @@ async function connectToDatabase() {
   }
 }
 
-export async function GET(req, res) {
-  try {
-    await connectToDatabase();
-    const result = await Product.find();
-    return NextResponse.json({ result }, { status: 200 });
-  } catch (error) {
-    return NextResponse.json({ message: "Failed to retrieve products", error }, { status: 500 });
-  }
-}
+// export async function GET(req, res) {
+//   try {
+//     await connectToDatabase();
+//     const result = await Product.find();
+//     return NextResponse.json({ result }, { status: 200 });
+//   } catch (error) {
+//     return NextResponse.json({ message: "Failed to retrieve products", error }, { status: 500 });
+//   }
+// }
 
 export async function POST(req, res) {
   try {

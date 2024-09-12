@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import Image from 'next/image';
 
 export async function getmeals(id) {
-  const response = await fetch(`/api/products/${id}`);
+  const response = await fetch(`/api/meals/${id}`);
   const data = await response.json();
   return data;
 }

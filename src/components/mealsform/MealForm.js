@@ -37,13 +37,17 @@ const MealForm = ({ mealName, setMealName, category, setCategory, description, s
         rows={4}
         required
       />
-      <FileInput
-        label="Add File"
-        
-        onChange={(e)=>setSelectedFile(e.target.files[0])}
-        required
-      />
-  
+      { setSelectedFile?
+
+        ( <FileInput
+         label="Add File"
+         
+         onChange={(e)=>setSelectedFile(e.target.files[0])}
+         required
+       />):""
+   
+      }
+     
     </div>
   );
 };
