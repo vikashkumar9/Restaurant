@@ -1,15 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import { FaInstagram, FaLinkedin, FaFacebook, FaGithub } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaFacebook, FaGithub, FaPhone } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
-import { FaPhone } from "react-icons/fa6";
 
-const Footer = () => {
+const MealsFooter = () => {
   return (
-    <footer className="bg-gray-800 text-white">
+    <div className="bg-gray-800 text-white">
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-12">
-          {/* Links Section */}
+         
           <div className="flex-1">
             <ul className="space-y-3">
               <li>
@@ -29,7 +28,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          {/* About and Contact Section */}
+        
           <div className="flex-1">
             <ul className="space-y-3">
               <li>
@@ -44,7 +43,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          {/* Contact Info and Social Media Section */}
+     
           <div className="flex-1">
             <ul className="space-y-3">
               <li className="flex items-center">
@@ -88,8 +87,8 @@ const Footer = () => {
       <div className="bg-gray-900 text-white py-2 text-center">
         © 2024
       </div>
-    </footer>
+    </div>
   );
 };
 
-export default Footer;
+export default MealsFooter;

@@ -33,7 +33,7 @@ const Meals = () => {
   return (
     
     <div>
-       <curr/>
+      
         <Head>
         <title>Meal Cards</title>
         <meta name="description" content="Responsive meal cards using Next.js and Tailwind CSS" />
@@ -47,13 +47,14 @@ const Meals = () => {
        
           {products.length > 0 ? (
             products.map((meal) => (
-              <Link key={meal.id} href={`/meals/${meal._id}`}>
+              <Link key={meal._id} href={`/meals/${meal._id}`}>
                 <MealCard
                   image={meal.image}
                   category={meal.category}
                   name={meal.name}
                   price={meal.price}
                 />
+ 
               </Link>
             ))
           ) : (

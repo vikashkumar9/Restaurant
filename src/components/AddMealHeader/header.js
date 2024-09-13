@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image'; // Adjust according to your image component or library
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 
@@ -48,8 +48,7 @@ const Header = () => {
               onClick={logOut} 
               className="hover:underline pr-2 bg-transparent border-none text-yellow-500 cursor-pointer">
               Log Out
-            </button>
-            <Link href="/restaurent/addmeals/editdata" className="pr-2 hover:underline">All Meals</Link>
+            </button> <Link href="/restaurent/addmeals/editdata" className="pr-2 hover:underline">All Meals</Link>
             <Link href="/restaurent/addmeals" className="hover:underline">Add Meals</Link>
           </>
         )}
