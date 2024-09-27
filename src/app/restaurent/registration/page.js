@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
-import Link from 'next/link';
-import { useRouter } from 'next/navigation'; 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Registration = () => {
   const [name, setName] = useState("");
@@ -12,14 +12,14 @@ const Registration = () => {
   const [location, setLocation] = useState("");
   const [city, setCity] = useState("");
   const [contact, setContact] = useState("");
-  const [error, setError] = useState(""); 
-  const router = useRouter(); 
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      let response = await fetch("/api/login", { 
+      let response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,13 +40,12 @@ const Registration = () => {
         const { result } = response;
         delete result.password;
         localStorage.setItem("restaurant_user", JSON.stringify(result));
-        router.push('/');
-         // Redirect to home or another page after registration
+        router.push("/");
       } else {
-        setError(response.message || "Registration failed"); // Handle error message
+        setError(response.message || "Registration failed");
       }
     } catch (err) {
-      setError("An error occurred"); // Handle fetch error
+      setError("An error occurred");
       console.error(err);
     }
   };
@@ -60,7 +59,7 @@ const Registration = () => {
         <h2 className="mb-4 text-2xl font-bold text-center text-black">
           Registration
         </h2>
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>} 
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <Input
           label="Enter Restaurant Name"
           type="text"
@@ -98,7 +97,7 @@ const Registration = () => {
         />
         <Input
           label="Contact No"
-          type="tel" 
+          type="tel"
           value={contact}
           onChange={(e) => setContact(e.target.value)}
           required
@@ -113,9 +112,7 @@ const Registration = () => {
           <p className="text-black">
             Already have an restaurent?{" "}
             <Link href="/restaurent/login">
-              <span className="text-yellow-500 cursor-pointer">
-                Login
-              </span>
+              <span className="text-yellow-500 cursor-pointer">Login</span>
             </Link>
           </p>
         </div>

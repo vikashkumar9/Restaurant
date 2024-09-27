@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
-import Link from 'next/link';
-import { useRouter } from 'next/navigation'; // Import the useRouter hook
+import Link from "next/link";
+import { useRouter } from "next/navigation"; // Import the useRouter hook
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      let response = await fetch("/api/login", { 
+      let response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const Login = () => {
         body: JSON.stringify({
           email,
           password,
-          login: true
+          login: true,
         }),
       });
 
@@ -33,9 +33,10 @@ const Login = () => {
         const { result } = response;
         delete result.password;
         localStorage.setItem("restaurant_user", JSON.stringify(result));
-        router.push('/'); // Redirect to the homepage or another page
+        router.push("/");
       } else {
-        setError(response.message || "Login failed"); // Display error message
+        setError(response.message || "Login failed");
+        alert("fail");
       }
     } catch (err) {
       setError("An error occurred"); // Display error message
@@ -52,9 +53,8 @@ const Login = () => {
         <h2 className="mb-4 text-2xl font-bold text-center text-black">
           Login
         </h2>
-        
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>} {/* Display error message */}
-        
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}{" "}
+        {/* Display error message */}
         <Input
           label="Email Address"
           type="email"
@@ -77,7 +77,7 @@ const Login = () => {
         </Button>
         <div className="flex justify-between mt-4">
           <p className="text-black">
-          Don&apos;t have an restaurent?
+            Don&apos;t have an restaurent?
             <Link href="/restaurent/registration">
               <span className="text-yellow-500 cursor-pointer">
                 Create a new restaurent

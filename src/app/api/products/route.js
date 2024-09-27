@@ -5,12 +5,14 @@ import { Product } from "@/lib/models/products";
 
 let isConnected = false;
 
-
 async function connectToDatabase() {
   if (isConnected) return;
-  
+
   try {
-    await mongoose.connect(connectionstr, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(connectionstr, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     isConnected = true;
   } catch (error) {
     console.error("Database connection error:", error);
@@ -18,21 +20,24 @@ async function connectToDatabase() {
   }
 }
 
-// export async function GET(req, res) {
-//   try {
-//     await connectToDatabase();
-//     const result = await Product.find();
-//     return NextResponse.json({ result }, { status: 200 });
-//   } catch (error) {
-//     return NextResponse.json({ message: "Failed to retrieve products", error }, { status: 500 });
-//   }
-// }
+export async function GET(req, res) {
+  try {
+    await connectToDatabase();
+    const result = await Product.find();
+    return NextResponse.json({ result }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Failed to retrieve products", error },
+      { status: 500 }
+    );
+  }
+}
 
 export async function POST(req, res) {
   try {
     const body = await req.json();
-    const { name, price, image, description, category,restoid } = body;
-   console.log(body)
+    const { name, price, image, description, category, restoid } = body;
+    console.log(body);
     // Input validation
     if (!name || !price || !description || !image || !category) {
       return NextResponse.json(
@@ -55,9 +60,10 @@ export async function POST(req, res) {
 
     const result = await product.save();
     return NextResponse.json(result, { status: 201 });
-
   } catch (error) {
-    return NextResponse.json({ message: "Failed to save product", error }, { status: 500 });
+    return NextResponse.json(
+      { message: "Failed to save product", error },
+      { status: 500 }
+    );
   }
 }
-

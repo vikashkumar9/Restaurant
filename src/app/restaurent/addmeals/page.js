@@ -1,7 +1,7 @@
-"use client"
-import React, { useState,useEffect } from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
-import MealForm from '@/components/mealsform/MealForm'
+import MealForm from "@/components/mealsform/MealForm";
 
 const AddMeal = () => {
   const [mealName, setMealName] = useState("");
@@ -17,21 +17,19 @@ const AddMeal = () => {
     setPrice("");
     setSelectedFile(null);
   };
-  
 
-useEffect(() => {
-  const userdata = JSON.parse(localStorage.getItem("restaurant_user"));
-  if (userdata) {
-    setRestoId(userdata._id);
-  }
-}, []);
-
+  useEffect(() => {
+    const userdata = JSON.parse(localStorage.getItem("restaurant_user"));
+    if (userdata) {
+      setRestoId(userdata._id);
+    }
+  }, []);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const imagedata = new FormData();
     imagedata.set("file", selectedFile);
@@ -39,9 +37,8 @@ useEffect(() => {
       method: "POST",
       body: imagedata,
     });
-   
- 
-     await fetch("/api/products", {
+
+    await fetch("/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,9 +49,10 @@ useEffect(() => {
         price: price,
         category: category,
         image: selectedFile.name,
-        restoid
+        restoid,
       }),
     });
+    alert("Meal is added sucessfully");
     clearForm();
   };
 
@@ -92,4 +90,3 @@ useEffect(() => {
 };
 
 export default AddMeal;
-

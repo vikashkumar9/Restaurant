@@ -16,9 +16,11 @@ const UpdateData = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const router = useRouter();
- const re="66df36be908fa855f5e2afdc";
+
+  const userdata = JSON.parse(localStorage.getItem("restaurant_user"));
+
   const getData = async () => {
-    const productData = await fetch(`/api/products/${re}`);
+    const productData = await fetch(`/api/products/${userdata._id}`);
     const results = await productData.json();
     setProductsData(results.result);
   };
@@ -66,7 +68,7 @@ const UpdateData = () => {
     setCategory("");
     setDescription("");
     setPrice("");
-   
+
     setSelectedProduct(null);
   };
 
