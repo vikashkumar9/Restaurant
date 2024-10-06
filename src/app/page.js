@@ -1,22 +1,37 @@
 "use client";
 import { useEffect, useState } from "react";
 import UserHeader from "@/components/Userheader/UserHeader";
+import Restaurent from "@/components/Restaurents/Restaurent";
+
 export default function Home() {
   const [city, setCity] = useState("");
   const [cities, setCities] = useState([]);
+  const [restaurantData, setRestaurentData] = useState([]);
 
   const getCities = async () => {
     const result = await fetch("/api/cities");
     const cityData = await result.json();
     setCities(cityData);
   };
+  console.log(restaurantData);
+  const getRestaurent = async () => {
+    let url = "/api/search";
+    if (city) {
+      url = `/api/search?location=${city}`;
+    }
+
+    const result = await fetch(url);
+    const restaurent = await result.json();
+    setRestaurentData(restaurent);
+  };
 
   useEffect(() => {
     getCities();
   }, []);
 
-  console.log(city);
-
+  useEffect(() => {
+    getRestaurent();
+  }, [city]);
   return (
     <main>
       <UserHeader />
@@ -33,12 +48,11 @@ export default function Home() {
               <option value="" disabled>
                 Location
               </option>
-              {cities &&
-                cities.map((item, index) => (
-                  <option value={item} key={index}>
-                    {item}
-                  </option>
-                ))}
+              {cities.map((item, index) => (
+                <option value={item} key={index}>
+                  {item}
+                </option>
+              ))}
             </select>
           </form>
 
@@ -49,6 +63,7 @@ export default function Home() {
           />
         </div>
       </div>
+      <Restaurent restaurent={restaurantData} />
     </main>
   );
 }
