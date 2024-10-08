@@ -129,13 +129,13 @@ const UpdateData = () => {
       <div className="mt-8 p-4">
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto text-left shadow-lg rounded-lg">
-            <thead className="text-slate-900">
-              <tr className="text-slate-900">
-                <th className="px-4 py-2">Image</th>
-                <th className="px-4 py-2">Name</th>
-                <th className="px-4 py-2">Description</th>
-                <th className="px-4 py-2">Price</th>
-                <th className="px-4 py-2">Category</th>
+            <thead className="text-black">
+              <tr>
+                <th className="px-4 py-2 text-black">Image</th>
+                <th className="px-4 py-2 text-black">Name</th>
+                <th className="px-4 py-2 text-black">Description</th>
+                <th className="px-4 py-2 text-black">Price</th>
+                <th className="px-4 py-2 text-black">Category</th>
                 <th className="px-4 py-2">Edit</th>
                 <th className="px-4 py-2">Delete</th>
               </tr>
@@ -153,10 +153,12 @@ const UpdateData = () => {
                         className="rounded-lg"
                       />
                     </td>
-                    <td className="px-4 py-2">{product.name}</td>
-                    <td className="px-4 py-2">{product.description}</td>
-                    <td className="px-4 py-2">{product.price}</td>
-                    <td className="px-4 py-2">{product.category}</td>
+                    <td className="px-4 py-2 text-black ">{product.name}</td>
+                    <td className="px-4 py-2 text-black">
+                      {product.description}
+                    </td>
+                    <td className="px-4 py-2 text-black">{product.price}</td>
+                    <td className="px-4 py-2 text-black">{product.category}</td>
                     <td className="px-4 py-2">
                       <Button
                         onClick={() => uniqueMeal(product._id)}

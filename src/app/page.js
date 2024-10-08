@@ -7,6 +7,7 @@ export default function Home() {
   const [city, setCity] = useState("");
   const [cities, setCities] = useState([]);
   const [restaurantData, setRestaurentData] = useState([]);
+  const [searchName, setSearchName] = useState("");
 
   const getCities = async () => {
     const result = await fetch("/api/cities");
@@ -18,6 +19,8 @@ export default function Home() {
     let url = "/api/search";
     if (city) {
       url = `/api/search?location=${city}`;
+    } else if (searchName) {
+      url = `/api/search?restaurant=${searchName}`;
     }
 
     const result = await fetch(url);
@@ -31,7 +34,7 @@ export default function Home() {
 
   useEffect(() => {
     getRestaurent();
-  }, [city]);
+  }, [city, searchName]);
   return (
     <main>
       <UserHeader />
@@ -48,11 +51,12 @@ export default function Home() {
               <option value="" disabled>
                 Location
               </option>
-              {cities.map((item, index) => (
-                <option value={item} key={index}>
-                  {item}
-                </option>
-              ))}
+              {cities &&
+                cities.map((item, index) => (
+                  <option value={item} key={index}>
+                    {item}
+                  </option>
+                ))}
             </select>
           </form>
 
@@ -60,10 +64,13 @@ export default function Home() {
             type="text"
             placeholder="Search meal and restaurant"
             className="border rounded-r p-2 bg-white text-black focus:outline-none w-full sm:w-1/2"
+            onChange={(e) => setSearchName(e.target.value)}
           />
         </div>
       </div>
-      <Restaurent restaurent={restaurantData} />
+      <div className="m-4">
+        <Restaurent restaurent={restaurantData} />
+      </div>
     </main>
   );
 }
