@@ -20,14 +20,16 @@ async function connectToDatabase() {
   }
 }
 
-export async function GET(req, res) {
+export async function GET(req) {
   try {
     await connectToDatabase();
     const result = await Product.find();
+
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
+    console.error("Error retrieving products:", error); // Log error for debugging
     return NextResponse.json(
-      { message: "Failed to retrieve products", error },
+      { message: "Failed to retrieve products", error: error.message },
       { status: 500 }
     );
   }

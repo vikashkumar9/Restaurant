@@ -14,7 +14,7 @@ export default function Home() {
     const cityData = await result.json();
     setCities(cityData);
   };
-  console.log(restaurantData);
+
   const getRestaurent = async () => {
     let url = "/api/search";
     if (city) {
@@ -23,9 +23,17 @@ export default function Home() {
       url = `/api/search?restaurant=${searchName}`;
     }
 
-    const result = await fetch(url);
-    const restaurent = await result.json();
-    setRestaurentData(restaurent);
+    try {
+      const result = await fetch(url);
+      if (!result.ok) {
+        throw new Error(`HTTP error! status: ${result.status}`);
+      }
+
+      const restaurent = await result.json();
+      setRestaurentData(restaurent);
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
   };
 
   useEffect(() => {
@@ -51,8 +59,8 @@ export default function Home() {
               <option value="" disabled>
                 Location
               </option>
-              {cities &&
-                cities.map((item, index) => (
+              {Array.isArray(cities) &&
+                cities?.map((item, index) => (
                   <option value={item} key={index}>
                     {item}
                   </option>

@@ -6,8 +6,8 @@ import { loginstr } from "@/lib/models/db";
 export async function GET(req) {
   try {
     await mongoose.connect(loginstr);
-    const result = await Login.find();
-    return NextResponse.json(result);
+    const loginData = await Login.find();
+    return NextResponse.json({ loginData });
   } catch (error) {
     console.error("GET request error:", error);
     return NextResponse.json(
