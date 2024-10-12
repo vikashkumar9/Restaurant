@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import UserHeader from "@/components/Userheader/UserHeader";
 import Restaurent from "@/components/Restaurents/Restaurent";
+import MealsFooter from "@/components/Footer/MealsFooter";
+import RestaurantTrust from "@/components/Restaurents/RestaurentTrust";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -46,13 +48,13 @@ export default function Home() {
   return (
     <main>
       <UserHeader />
-      <div className="bg-[url('/loginbg.jpeg')] bg-cover bg-center h-[200px] flex items-center justify-center">
-        <div className="flex flex-col md:flex-row items-center w-full max-w-4xl p-4 text-black">
-          <form className="flex items-center border-none rounded-md shadow-md">
+      <div className="bg-[url('/loginbg.jpeg')] bg-cover bg-center h-[200px] md:h-[400px] w-full flex items-center justify-center">
+        <div className="flex   md:flex-row items-center w-full max-w-4xl p-4 justify-center text-black">
+          <form className="flex   border-none rounded-md shadow-md">
             <select
               id="cities"
               name="cities"
-              className="bg-white border rounded-l p-2 focus:outline-none w-full"
+              className="bg-white border rounded-l py-2.5 focus:outline-none w-full"
               value={city}
               onChange={(e) => setCity(e.target.value)}
             >
@@ -71,7 +73,7 @@ export default function Home() {
           <input
             type="text"
             placeholder="Search meal and restaurant"
-            className="border rounded-r p-2 bg-white text-black focus:outline-none w-full sm:w-1/2"
+            className="border rounded-r p-2 bg-white text-black focus:outline-none  sm:w-1/2"
             onChange={(e) => setSearchName(e.target.value)}
           />
         </div>
@@ -79,6 +81,8 @@ export default function Home() {
       <div className="m-4">
         <Restaurent restaurent={restaurantData} />
       </div>
+      <RestaurantTrust />
+      <MealsFooter />
     </main>
   );
 }

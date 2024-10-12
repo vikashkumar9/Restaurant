@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { Login } from "@/lib/models/products";
-import { loginstr } from "@/lib/models/db";
+import { connectionstr } from "@/lib/models/db";
 
 export async function GET(req) {
   try {
-    await mongoose.connect(loginstr);
+    await mongoose.connect(connectionstr);
     var result = await Login.find();
     result = result.map((item) => item?.city);
     result = [...new Set(result)];

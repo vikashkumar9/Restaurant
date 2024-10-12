@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 import { Login } from "@/lib/models/products";
-import { loginstr } from "@/lib/models/db";
+import { connectionstr } from "@/lib/models/db";
 
 export async function GET(req) {
   const queryParams = req.nextUrl.searchParams;
@@ -13,7 +13,7 @@ export async function GET(req) {
   } else if (restaurant) {
     filter.name = new RegExp(restaurant, "i");
   }
-  await mongoose.connect(loginstr);
+  await mongoose.connect(connectionstr);
   const result = await Login.find(filter);
   return NextResponse.json(result);
 }

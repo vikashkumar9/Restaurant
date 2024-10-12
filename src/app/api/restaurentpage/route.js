@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
-import { Login } from "@/lib/models/products";
-import { loginstr } from "@/lib/models/db";
+import { Login, Product } from "@/lib/models/products";
+import { connectionstr } from "@/lib/models/db";
 
 export async function GET(req) {
   try {
-    await mongoose.connect(loginstr);
-    const loginData = await Login.find();
-    return NextResponse.json({ loginData });
+    await mongoose.connect(connectionstr);
+
+    const restaurent = await Login.find();
+    const meals = await Product.find();
+    return NextResponse.json({ restaurent, meals });
   } catch (error) {
     console.error("GET request error:", error);
     return NextResponse.json(

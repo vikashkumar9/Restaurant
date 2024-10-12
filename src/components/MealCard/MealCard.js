@@ -1,8 +1,35 @@
 "use client";
 
 import Image from "next/image";
+import Button from "../ui/Button";
+import { useEffect, useState } from "react";
 
 function MealCard({ meals }) {
+  const cartdata = JSON.parse(localStorage.getItem("cartdata"));
+  var data;
+  if (cartdata) {
+    data = cartdata;
+  } else {
+    data = [];
+  }
+
+  const [cartitems, setcartitems] = useState(data);
+
+  const addtocart = (item) => {
+    setcartitems(() => {
+      if (cartitems.find((c) => c._id === item._id)) {
+        return cartitems.map((c) =>
+          c._id === item._id ? { ...c, quantity: c.quantity + 1 } : c
+        );
+      } else {
+        return [...cartitems, item];
+      }
+    });
+  };
+  useEffect(() => {
+    localStorage.setItem("cartdata", JSON.stringify(cartitems));
+  }, [cartitems]);
+
   return (
     <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {meals ? (
@@ -29,6 +56,12 @@ function MealCard({ meals }) {
               </h2>
               <p className="text-blue-600 text-xl font-bold">${meal.price}</p>
             </div>
+            <Button
+              className="w-full bg-orange-500 text-white py-2 rounded-lg"
+              onClick={() => addtocart(meal)}
+            >
+              Add to cart
+            </Button>
           </div>
         ))
       ) : (

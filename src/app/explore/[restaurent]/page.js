@@ -2,17 +2,21 @@
 import { useState, useEffect } from "react";
 import MealCard from "@/components/MealCard/MealCard";
 import UserHeader from "@/components/Userheader/UserHeader";
+import Restaurentdetails from "@/components/Restaurentdetails/Restaurentdetails";
+import MealsFooter from "@/components/Footer/MealsFooter";
+import AutoPlay from "@/components/MealsImg/AutoPlay";
 const Restaurent = ({ params }) => {
-  const [productData, setproducuData] = useState([]);
+  const [productData, setProductData] = useState([]); // Fixed typo
   const id = params.restaurent;
+
   const getData = async () => {
     try {
-      const productData = await fetch(`/api/products`);
-      if (!productData.ok) {
+      const response = await fetch(`/api/restaurentpage/${id}`);
+      if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      const results = await productData.json();
-      setproducuData(results.result);
+      const results = await response.json();
+      setProductData(results);
       console.log(id, results);
     } catch (error) {
       console.error("Fetch error:", error);
@@ -24,11 +28,22 @@ const Restaurent = ({ params }) => {
   }, []);
 
   return (
-    <>
+    <div className="bg-white">
       <UserHeader />
-
-      <MealCard meals={productData} />
-    </>
+      <div className="bg-[url('/loginbg.jpeg')] bg-cover bg-center h-[200px] md:h-[400px] flex items-center justify-center">
+        <h1 className="text-4xl font-bold text-gray-900">
+          {productData.restaurent?.name}
+        </h1>
+      </div>{" "}
+      <div className="my-4">
+        <Restaurentdetails resto={productData?.restaurent} />
+      </div>
+      <AutoPlay meals={productData?.meals || []} />
+      <div className=" m-8">
+        <MealCard meals={productData?.meals || []} />
+      </div>
+      <MealsFooter />
+    </div>
   );
 };
 
