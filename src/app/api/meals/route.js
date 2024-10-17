@@ -9,10 +9,7 @@ async function connectToDatabase() {
   if (isConnected) return;
 
   try {
-    await mongoose.connect(connectionstr, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(connectionstr);
     isConnected = true;
   } catch (error) {
     console.error("Database connection error:", error);

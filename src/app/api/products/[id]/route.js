@@ -5,10 +5,7 @@ import { Product } from "@/lib/models/products";
 
 async function connectToDB() {
   if (mongoose.connection.readyState === 0) {
-    await mongoose.connect(connectionstr, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(connectionstr);
   }
 }
 

@@ -5,10 +5,7 @@ import { Product } from "@/lib/models/products";
 
 async function connectToDB() {
   if (mongoose.connection.readyState === 0) {
-    await mongoose.connect(connectionstr, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(connectionstr);
   }
 }
 
@@ -20,17 +17,16 @@ export async function GET(req, { params }) {
 
     const result = await Product.find({ restoid: productId });
 
-    // Check if the result is an empty array
     if (result.length === 0) {
       return NextResponse.json(
         { message: "No products found for this restaurant ID" },
-        { status: 204 } // 204 No Content
+        { status: 204 }
       );
     }
 
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
-    console.error("Error retrieving product:", error); // Log error for debugging
+    console.error("Error retrieving product:", error);
     return NextResponse.json(
       { message: "Failed to retrieve product", error: error.message },
       { status: 500 }

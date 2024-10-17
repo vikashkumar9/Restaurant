@@ -1,21 +1,8 @@
 "use client";
-import React, { useState } from "react";
-import LoginForm from "@/components/login/LoginForm";
+import React from "react";
 
-const handleLogindata =(logindata)=>{
-  console.log(logindata)
-}
-const handleRegistrationdata=(registrationdata)=>{
-console.log("rgistrationdata",registrationdata)
-}
 const Login = () => {
-
-  return (
-    <div>
-    <LoginForm addLogindata={handleLogindata} addRgistrationdata={handleRegistrationdata}/>
-    
-    </div>
-  );
+  return <div>login</div>;
 };
 
 export default Login;

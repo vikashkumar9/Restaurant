@@ -17,34 +17,34 @@ export default function Home() {
     setCities(cityData);
   };
 
-  const getRestaurent = async () => {
-    let url = "/api/search";
-    if (city) {
-      url = `/api/search?location=${city}`;
-    } else if (searchName) {
-      url = `/api/search?restaurant=${searchName}`;
-    }
-
-    try {
-      const result = await fetch(url);
-      if (!result.ok) {
-        throw new Error(`HTTP error! status: ${result.status}`);
+  useEffect(() => {
+    const getRestaurent = async () => {
+      let url = "/api/search";
+      if (city) {
+        url = `/api/search?location=${city}`;
+      } else if (searchName) {
+        url = `/api/search?restaurant=${searchName}`;
       }
 
-      const restaurent = await result.json();
-      setRestaurentData(restaurent);
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
-  };
+      try {
+        const result = await fetch(url);
+        if (!result.ok) {
+          throw new Error(`HTTP error! status: ${result.status}`);
+        }
+
+        const restaurent = await result.json();
+        setRestaurentData(restaurent);
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    };
+
+    getRestaurent();
+  }, [city, searchName]);
 
   useEffect(() => {
     getCities();
-  }, []);
-
-  useEffect(() => {
-    getRestaurent();
-  }, [city, searchName]);
+  }, [cities]);
   return (
     <main>
       <UserHeader />

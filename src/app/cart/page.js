@@ -2,6 +2,7 @@
 import UserHeader from "@/components/Userheader/UserHeader";
 import React, { useEffect, useState } from "react";
 import MealsFooter from "@/components/Footer/MealsFooter";
+import Image from "next/image";
 const Cart = () => {
   const [cartdata, setCartData] = useState([]);
 
@@ -43,9 +44,11 @@ const Cart = () => {
                 {cartdata.map((item) => (
                   <tr key={item._id} className="border-t">
                     <td className="px-4 py-2">
-                      <img
+                      <Image
                         src={`/${item.image}`}
                         alt={item.name}
+                        height={10000}
+                        width={1000}
                         className="w-16 h-16 object-cover"
                       />
                     </td>

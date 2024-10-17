@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import MealForm from "@/components/mealsform/MealForm";
 import Button from "@/components/ui/Button";
+import MealsFooter from "@/components/Footer/MealsFooter";
 
 const UpdateData = () => {
   const [productsData, setProductsData] = useState([]);
@@ -11,24 +12,37 @@ const UpdateData = () => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const router = useRouter();
 
-  const userdata = JSON.parse(localStorage.getItem("restaurant_user"));
+  useEffect(() => {
+    let userdata = null;
 
-  const getData = async () => {
-    const productData = await fetch(`/api/products/${userdata._id}`);
-    const results = await productData.json();
-    setProductsData(results.result);
-  };
+    // Check if `window` exists to safely access `localStorage`
+    if (typeof window !== "undefined") {
+      userdata = JSON.parse(localStorage.getItem("restaurant_user"));
+    }
+
+    const getData = async () => {
+      try {
+        if (userdata && userdata._id) {
+          const productData = await fetch(`/api/products/${userdata._id}`);
+          const results = await productData.json();
+          setProductsData(results.result);
+        }
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    getData();
+  }, []);
 
   const uniqueMeal = async (id) => {
     const response = await fetch(`/api/meals/${id}`);
     const data = await response.json();
-    console.log(data);
     if (response.ok) {
       setName(data.result.name);
       setCategory(data.result.category);
@@ -36,13 +50,8 @@ const UpdateData = () => {
       setPrice(data.result.price);
       setSelectedProduct(id);
       openModal();
-      getData();
     }
   };
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   const deleteHandler = async (id) => {
     await fetch(`/api/products/${id}`, {
@@ -188,6 +197,7 @@ const UpdateData = () => {
           </table>
         </div>
       </div>
+      <MealsFooter />
     </>
   );
 };

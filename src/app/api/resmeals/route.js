@@ -9,10 +9,7 @@ async function connectToDatabase() {
   if (isConnected) return;
 
   try {
-    await mongoose.connect(connectionstr, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(connectionstr);
     isConnected = true;
   } catch (error) {
     console.error("Database connection error:", error);
@@ -27,7 +24,7 @@ export async function GET(req) {
 
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
-    console.error("Error retrieving products:", error); // Log error for debugging
+    console.error("Error retrieving products:", error);
     return NextResponse.json(
       { message: "Failed to retrieve products", error: error.message },
       { status: 500 }

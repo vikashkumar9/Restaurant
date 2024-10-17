@@ -8,8 +8,8 @@ import { useRouter } from "next/navigation";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // Added for error handling
-  const router = useRouter(); // Use the useRouter hook for redirection
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const Login = () => {
         alert("fail");
       }
     } catch (err) {
-      setError("An error occurred"); // Display error message
+      setError("An error occurred");
       console.error(err);
     }
   };
@@ -53,8 +53,7 @@ const Login = () => {
         <h2 className="mb-4 text-2xl font-bold text-center text-black">
           Login
         </h2>
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}{" "}
-        {/* Display error message */}
+        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         <Input
           label="Email Address"
           type="email"

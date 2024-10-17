@@ -6,26 +6,25 @@ import Restaurentdetails from "@/components/Restaurentdetails/Restaurentdetails"
 import MealsFooter from "@/components/Footer/MealsFooter";
 import AutoPlay from "@/components/MealsImg/AutoPlay";
 const Restaurent = ({ params }) => {
-  const [productData, setProductData] = useState([]); // Fixed typo
+  const [productData, setProductData] = useState([]);
   const id = params.restaurent;
 
-  const getData = async () => {
-    try {
-      const response = await fetch(`/api/restaurentpage/${id}`);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const results = await response.json();
-      setProductData(results);
-      console.log(id, results);
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await fetch(`/api/restaurentpage/${id}`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const results = await response.json();
+        setProductData(results);
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    };
+
     getData();
-  }, []);
+  }, [id]);
 
   return (
     <div className="bg-white">

@@ -1,7 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import MealsFooter from "@/components/Footer/MealsFooter";
-import UserHeader from "@/components/Userheader/UserHeader";
+
+// import { I18nextProvider } from "react-i18next";
+// import i18n from "../i18n/i18n";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Create Next App",
@@ -11,11 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {/* <UserHeader/> */}
-        {children}
-        {/* <MealsFooter/> */}
-      </body>
+      {/* <I18nextProvider i18n={i18n}> */}
+      <body className={inter.className}>{children}</body>
+      {/* </I18nextProvider> */}
     </html>
   );
 }
