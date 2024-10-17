@@ -27,14 +27,14 @@ const Cart = () => {
     <>
       <UserHeader />
       <div className="container mx-auto px-4 mb-8 bg-white">
-        <h2 className="text-2xl font-bold mb-4 k">Your Cart</h2>
+        <h2 className="text-2xl font-bold mb-4 text-black">Your Cart</h2>
         {cartdata.length > 0 ? (
           <>
             <div className="overflow-x-auto">
               <table className="w-full table-auto ">
                 <thead>
                   <tr>
-                    <th className="px-4 py-2 text-white">Image</th>
+                    <th className="px-4 py-2 text-black">Image</th>
                     <th className="px-4 py-2 text-black">Name</th>
                     <th className="px-4 py-2 text-black">Price</th>
                     <th className="px-4 py-2 text-black">Quantity</th>
@@ -70,14 +70,16 @@ const Cart = () => {
               </table>
             </div>
             <div className="mt-8">
-              <h3 className="text-lg font-bold">Total Price: ${totalcost}</h3>
+              <h3 className="text-lg font-bold text-black">
+                Total Price: ${totalcost}
+              </h3>
               <button className="w-full py-2 px-4 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300 mt-4">
                 Checkout
               </button>
             </div>
           </>
         ) : (
-          <p>Your cart is empty.</p>
+          <p className="text-black">Your cart is empty.</p>
         )}
       </div>
       <MealsFooter />

@@ -13,7 +13,7 @@ const UserHeader = () => {
   }, []);
 
   return (
-    <header className="bg-transparent text-white p-4 flex items-center justify-between">
+    <header className="bg-transparent text-white py-4 px-2 md:p-4 flex items-center justify-between">
       <div className="flex items-center">
         <Image
           src="/bannerimg1.jpg"
@@ -22,7 +22,7 @@ const UserHeader = () => {
           height={50}
           className="rounded-full"
         />
-        <h1 className="ml-4 font-bold text-yellow-500">APP</h1>
+        <h1 className="ml-4 font-bold text-yellow-500 md:flex hidden">APP</h1>
       </div>
       <nav className="lg:space-x-4 lg:text-2xl text-yellow-500">
         <Link href="/" className="hover:underline pr-2">
