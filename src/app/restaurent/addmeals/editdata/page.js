@@ -135,7 +135,7 @@ const UpdateData = () => {
         </div>
       )}
 
-      <div className="mt-8 p-4">
+      <div className="mt-8 p-4 bg-white">
         <div className="overflow-x-auto">
           <table className="min-w-full table-auto text-left shadow-lg rounded-lg">
             <thead className="text-black">

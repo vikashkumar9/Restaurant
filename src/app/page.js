@@ -44,7 +44,7 @@ export default function Home() {
 
   useEffect(() => {
     getCities();
-  }, [cities]);
+  }, []);
   return (
     <main>
       <UserHeader />
