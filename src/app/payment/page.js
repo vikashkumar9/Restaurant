@@ -25,7 +25,7 @@ const RazorpayPayment = () => {
       // Set up payment here
       const options = {
         key: "rzp_test_cKs8wdiKqj6JLu",
-        amount: { totalcost },
+        amount: totalcost * 100,
         currency: "INR",
         name: "Restaurent",
         description: "Test Transaction",
