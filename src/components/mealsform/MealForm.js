@@ -1,13 +1,22 @@
-"use client"
+"use client";
 import React from "react";
 import Input from "../ui/Input";
 import Textarea from "../ui/Textarea";
 import FileInput from "../ui/FileInput";
 
-const MealForm = ({ mealName, setMealName, category, setCategory, description, setDescription, price, setPrice, setSelectedFile }) => {
+const MealForm = ({
+  mealName,
+  setMealName,
+  category,
+  setCategory,
+  description,
+  setDescription,
+  price,
+  setPrice,
+  setSelectedFile,
+}) => {
   return (
-    
-    <div > 
+    <div>
       <Input
         type="text"
         label="Meal Name"
@@ -24,10 +33,9 @@ const MealForm = ({ mealName, setMealName, category, setCategory, description, s
       />
       <Input
         type="number"
-        label="Price ($)"
+        label="Price (₹)"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
-        
         required
       />
       <Textarea
@@ -37,17 +45,15 @@ const MealForm = ({ mealName, setMealName, category, setCategory, description, s
         rows={4}
         required
       />
-      { setSelectedFile?
-
-        ( <FileInput
-         label="Add File"
-         
-         onChange={(e)=>setSelectedFile(e.target.files[0])}
-         required
-       />):""
-   
-      }
-     
+      {setSelectedFile ? (
+        <FileInput
+          label="Add File"
+          onChange={(e) => setSelectedFile(e.target.files[0])}
+          required
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

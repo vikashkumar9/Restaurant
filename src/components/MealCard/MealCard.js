@@ -54,7 +54,7 @@ function MealCard({ meals }) {
               <h2 className="text-lg font-semibold text-gray-800">
                 {meal.name}
               </h2>
-              <p className="text-blue-600 text-xl font-bold">${meal.price}</p>
+              <p className="text-blue-600 text-xl font-bold">₹{meal.price}</p>
             </div>
             <Button
               className="w-full bg-orange-500 text-white py-2 rounded-lg"

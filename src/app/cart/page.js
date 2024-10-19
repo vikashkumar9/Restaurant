@@ -56,7 +56,7 @@ const Cart = () => {
                         />
                       </td>
                       <td className="px-4 py-2 text-black">{item.name}</td>
-                      <td className="px-4 py-2 text-black">${item.price}</td>
+                      <td className="px-4 py-2 text-black">₹{item.price}</td>
                       <td className="px-4 py-2 text-black">{item.quantity}</td>
                       <td className="px-4 py-2 text-black">
                         <button
@@ -73,13 +73,12 @@ const Cart = () => {
             </div>
             <div className="mt-8">
               <h3 className="text-lg font-bold text-black">
-                Total Price: ${totalcost}
+                Total Price:₹{totalcost}
               </h3>
-              <Link href="/payment" >
-       
-              <Button className="w-full py-2 px-4 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300 mt-4">
-                Checkout
-              </Button>
+              <Link href="/payment">
+                <Button className="w-full py-2 px-4 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300 mt-4">
+                  Checkout
+                </Button>
               </Link>
             </div>
           </>
