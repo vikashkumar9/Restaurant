@@ -3,6 +3,8 @@ import UserHeader from "@/components/Userheader/UserHeader";
 import React, { useEffect, useState } from "react";
 import MealsFooter from "@/components/Footer/MealsFooter";
 import Image from "next/image";
+import Button from "@/components/ui/Button";
+import Link from "next/link";
 const Cart = () => {
   const [cartdata, setCartData] = useState([]);
 
@@ -73,9 +75,12 @@ const Cart = () => {
               <h3 className="text-lg font-bold text-black">
                 Total Price: ${totalcost}
               </h3>
-              <button className="w-full py-2 px-4 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300 mt-4">
+              <Link href="/payment" >
+       
+              <Button className="w-full py-2 px-4 bg-yellow-500 text-white rounded hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300 mt-4">
                 Checkout
-              </button>
+              </Button>
+              </Link>
             </div>
           </>
         ) : (

@@ -26,3 +26,16 @@ const loginSchema = new mongoose.Schema({
 
 export const Login =
   mongoose.models.Login || mongoose.model("Login", loginSchema);
+
+
+  const userloginSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    password: String,
+    location:String,
+    city:String,
+    contact:String
+  });
+  
+  export const UserLogin =
+    mongoose.models.UserLogin || mongoose.model("UserLogin", userloginSchema);
