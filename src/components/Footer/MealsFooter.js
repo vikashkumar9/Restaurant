@@ -1,129 +1,272 @@
-import React from "react";
+
+// import Link from "next/link";
+// import {
+//   FaInstagram,
+//   FaLinkedin,
+//   FaFacebook,
+//   FaGithub,
+//   FaPhone,
+// } from "react-icons/fa";
+// import { MdOutlineEmail } from "react-icons/md";
+
+// const MealsFooter = () => {
+//   return (
+//     <div className="bg-gray-800 text-white">
+//       <div className="container mx-auto px-4 py-6">
+//         <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-12">
+//           <div className="flex-1">
+//             <ul className="space-y-3">
+//               <li>
+//                 <Link
+//                   href="/restaurent/addmeals"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   Add Your Own Restaurant
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="/"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   Meals
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="/login"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   Login
+//                 </Link>
+//               </li>
+//             </ul>
+//           </div>
+
+//           <div className="flex-1">
+//             <ul className="space-y-3">
+//               <li>
+//                 <Link
+//                   href="/about"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   Who We Are
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="/contact"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   Contact Us
+//                 </Link>
+//               </li>
+//             </ul>
+//           </div>
+
+//           <div className="flex-1">
+//             <ul className="space-y-3">
+//               <li className="flex items-center">
+//                 <FaPhone className="text-xl mr-2" />
+//                 <Link
+//                   href="tel:9306075344"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   +91 93060 75344
+//                 </Link>
+//               </li>
+//               <li className="flex items-center">
+//                 <MdOutlineEmail className="text-xl mr-2" />
+//                 <Link
+//                   href="mailto:vikashparjapati59@gmail.com"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   vikashparjapati59@gmail.com
+//                 </Link>
+//               </li>
+//             </ul>
+//             <ul className="flex space-x-4 mt-4">
+//               <li>
+//                 <Link
+//                   href="https://www.instagram.com/parjapati2924/"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   <FaInstagram className="text-2xl" />
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="https://www.linkedin.com/in/vikash-parjapati-a670371b2/"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   <FaLinkedin className="text-2xl" />
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="https://www.facebook.com/vikash.parjapati.58555941"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   <FaFacebook className="text-2xl" />
+//                 </Link>
+//               </li>
+//               <li>
+//                 <Link
+//                   href="https://github.com/vikashkumar9"
+//                   className="hover:text-cyan-400 transition-colors duration-300"
+//                 >
+//                   <FaGithub className="text-2xl" />
+//                 </Link>
+//               </li>
+//             </ul>
+//           </div>
+//         </div>
+//       </div>
+//       <div className="bg-gray-900 text-white py-2 text-center">© 2024</div>
+//     </div>
+//   );
+// };
+
+// export default MealsFooter;
+
 import Link from "next/link";
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaFacebook,
-  FaGithub,
-  FaPhone,
-} from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
+import React from "react";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdOutlineMailOutline } from "react-icons/md";
+import { MdOutlineFileDownload } from "react-icons/md";
 
 const MealsFooter = () => {
   return (
-    <div className="bg-gray-800 text-white">
-      <div className="container mx-auto px-4 py-6">
-        <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-12">
-          <div className="flex-1">
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/restaurent/addmeals"
-                  className="hover:text-cyan-400 transition-colors duration-300"
-                >
-                  Add Your Own Restaurant
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/"
-                  className="hover:text-cyan-400 transition-colors duration-300"
-                >
-                  Meals
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/login"
-                  className="hover:text-cyan-400 transition-colors duration-300"
-                >
-                  Login
-                </Link>
-              </li>
-            </ul>
+    <>
+      <div className="bg-footerBgColor text-black mt-4 md:mt-8 py-12 md:py-20  ">
+        <div className="container mx-auto px-8 grid grid-cols-1 gap-8  md:grid-cols-4 md:gap-8">
+          {/* About Section */}
+          <div>
+            <img
+              src="https://i0.wp.com/paydhara.com/wp-content/uploads/2024/10/HD-landscape-logo.jpg?fit=1584%2C396&amp;quality=100&amp;strip=all&amp;ssl=1"
+              alt="SevenPay Logo"
+              className="h-10 mb-4"
+              style={{
+                background: "transparent",
+                mixBlendMode: "multiply",
+              }}
+            />
+
+            <p className="text-sm leading-relaxed">
+              At Paydhara, we specialize in providing innovative payment
+              solutions and APIs to simplify transactions for businesses of all
+              sizes. Our mission is to empower companies with secure, efficient
+              payment processing that enhances the customer experience.
+            </p>
           </div>
 
-          <div className="flex-1">
-            <ul className="space-y-3">
+          {/* Quick Links Section */}
+          <div>
+            <h2 className="text-xl text-textRed font-bold mb-4">Quick Links</h2>
+            <ul className="space-y-2">
               <li>
-                <Link
-                  href="/about"
-                  className="hover:text-cyan-400 transition-colors duration-300"
-                >
-                  Who We Are
+                <Link href="/" className=" hover:text-textRed">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className=" hover:text-textRed">
+                  About Us
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/contact"
-                  className="hover:text-cyan-400 transition-colors duration-300"
+                  href="/services/bankservices"
+                  className=" hover:text-textRed"
                 >
+                  All Services
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className=" hover:text-textRed">
                   Contact Us
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="flex-1">
-            <ul className="space-y-3">
-              <li className="flex items-center">
-                <FaPhone className="text-xl mr-2" />
-                <Link
-                  href="tel:9306075344"
-                  className="hover:text-cyan-400 transition-colors duration-300"
-                >
-                  +91 93060 75344
+          <div>
+            <h2 className="text-xl font-bold  text-textRed  mb-4">Legal</h2>
+            <ul className="space-y-2">
+              <li>
+                <Link href="privatePolicy" className=" hover:text-textRed">
+                  Privacy Policy
                 </Link>
               </li>
-              <li className="flex items-center">
-                <MdOutlineEmail className="text-xl mr-2" />
-                <Link
-                  href="mailto:vikashparjapati59@gmail.com"
-                  className="hover:text-cyan-400 transition-colors duration-300"
-                >
-                  vikashparjapati59@gmail.com
+              <li>
+                <Link href="/termsConditions" className=" hover:text-textRed">
+                  Terms And Conditions
                 </Link>
+              </li>
+              <li>
+                <Link href="/refundPolicy" className=" hover:text-textRed">
+                  Refund Policy
+                </Link>
+              </li>
+              <li className="flex items-center space-x-2 cursor-pointer">
+                <p className="flex items-center  hover:text-textRed">
+                  <MdOutlineFileDownload className="w-5 h-5 text-textRed" />
+                  <span className="ml-2">Download app</span>
+                </p>
               </li>
             </ul>
-            <ul className="flex space-x-4 mt-4">
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-textRed  mb-4">Contacts</h2>
+            <ul className="space-y-2">
               <li>
-                <Link
-                  href="https://www.instagram.com/parjapati2924/"
-                  className="hover:text-cyan-400 transition-colors duration-300"
-                >
-                  <FaInstagram className="text-2xl" />
-                </Link>
+                <div className="flex items-center space-x-4">
+                  {/* Icon */}
+                  <div className="p-3 bg-red-100 rounded-full">
+                    <MdOutlineMailOutline className="w-6 h-6 text-red-500" />
+                  </div>
+
+                  <div>
+                    <span className="block text-gray-700 font-medium">
+                      Email
+                    </span>
+                    <a
+                      href="mailto:vikashparjapati59@gmail.com"
+                      className="block text-red-500 text-lg font-bold"
+                    >
+                      vikashparjapati59@gmail.com
+                    </a>
+                  </div>
+                </div>
               </li>
               <li>
-                <Link
-                  href="https://www.linkedin.com/in/vikash-parjapati-a670371b2/"
-                  className="hover:text-cyan-400 transition-colors duration-300"
-                >
-                  <FaLinkedin className="text-2xl" />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://www.facebook.com/vikash.parjapati.58555941"
-                  className="hover:text-cyan-400 transition-colors duration-300"
-                >
-                  <FaFacebook className="text-2xl" />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://github.com/vikashkumar9"
-                  className="hover:text-cyan-400 transition-colors duration-300"
-                >
-                  <FaGithub className="text-2xl" />
-                </Link>
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-red-100 rounded-full">
+                    <FaPhoneAlt className="w-6 h-6 text-red-500" />
+                  </div>
+                  <div>
+                    <span className="block text-gray-700 font-medium">
+                      Customer Support
+                    </span>
+                    <a
+                      href="tel:+919306075344"
+                      className="text-red-500 text-lg font-bold"
+                    >
+                      9306075344
+                    </a>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div className="bg-gray-900 text-white py-2 text-center">© 2024</div>
-    </div>
+      <div className="elementor-widget-container">
+        <div className="copyright-text text-white text-center bg-blue-900 py-2">
+          Copyright© 2024 Vk Restaurent.&nbsp;All Rights Reserved.{" "}
+        </div>
+      </div>
+    </>
   );
 };
 
