@@ -101,7 +101,7 @@ const UpdateData = () => {
   return (
     <>
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed py-4 inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <form
             onSubmit={handleSubmit}
             className="w-full max-w-sm bg-white shadow-lg rounded-lg p-6 space-y-4"

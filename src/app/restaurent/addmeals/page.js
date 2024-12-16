@@ -59,7 +59,7 @@ const AddMeal = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen px-4">
+      <div className="flex items-center justify-center min-h-screen px-4 pt-4">
         <form
           onSubmit={handleSubmit}
           className="w-full max-w-sm bg-white shadow-lg rounded-lg p-6 space-y-4"

@@ -36,7 +36,7 @@ console.log(pathname)
   };
 
   return (
-    <header className="bg-transparent text-white py-4 px-2 md:p-4 flex items-center justify-between">
+    <header className="bg-white text-white py-4 px-2 md:p-4 flex items-center justify-between shadow-2xl ">
       <div className="flex items-center">
         <Image
           src="/bannerimg1.jpg"

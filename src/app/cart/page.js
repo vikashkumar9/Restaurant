@@ -28,7 +28,7 @@ const Cart = () => {
   return (
     <>
       <UserHeader />
-      <div className="container mx-auto px-4 mb-8 bg-white">
+      <div className="container mx-auto px-4 py-4 mb-8 bg-white">
         <h2 className="text-2xl font-bold mb-4 text-black">Your Cart</h2>
         {cartdata.length > 0 ? (
           <>

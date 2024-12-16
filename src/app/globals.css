@@ -113,3 +113,12 @@ a {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.block {
+  display: block;
+}
+
+.break-words {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
