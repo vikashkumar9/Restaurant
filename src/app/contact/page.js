@@ -75,7 +75,7 @@ const ContactSection = () => {
                   placeholder="Name"
                   maxLength="35"
                   aria-label="Enter your full name"
-                  className="w-full bg-white border border-red-500 rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
+                  className="w-full bg-white border border-textRed rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
                 />
               </div>
               <div className="mb-4">
@@ -85,7 +85,7 @@ const ContactSection = () => {
                   placeholder="Mobile Number"
                   maxLength="10"
                   aria-label="Enter your mobile number"
-                  className="w-full bg-white border border-red-500 rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
+                  className="w-full bg-white border border-textRed rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
                 />
               </div>
               <div className="mb-4">
@@ -94,7 +94,7 @@ const ContactSection = () => {
                   name="email"
                   placeholder="Email Address"
                   aria-label="Enter your email address"
-                  className="w-full bg-white border border-red-500 rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
+                  className="w-full bg-white border border-textRed rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
                 />
               </div>
               <div className="mb-4">
@@ -103,13 +103,13 @@ const ContactSection = () => {
                   placeholder="Message"
                   rows="6"
                   aria-label="Enter your message"
-                  className="w-full bg-white border border-red-500 rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
+                  className="w-full bg-white border border-textRed rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
                 />
               </div>
               <div>
                 <button
                   type="submit"
-                  className="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200"
+                  className="bg-textRed text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200"
                 >
                   Send
                 </button>
@@ -126,13 +126,13 @@ const ContactSection = () => {
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div className="p-3 bg-red-100 rounded-full">
-                  <MdOutlineMailOutline className="w-6 h-6 text-red-500" />
+                  <MdOutlineMailOutline className="w-6 h-6 text-textRed" />
                 </div>
                 <div>
                   <span className="block text-gray-700 font-medium">Email</span>
                   <a
                     href="mailto:help@paydhara.com"
-                    className="block text-red-500 text-lg font-bold"
+                    className="block text-textRed text-lg font-bold"
                   >
                     help@paydhara.com
                   </a>
@@ -140,7 +140,7 @@ const ContactSection = () => {
               </div>
               <div className="flex items-start space-x-4">
                 <div className="p-3 bg-red-100 rounded-full">
-                  <FaPhoneAlt className="w-6 h-6 text-red-500" />
+                  <FaPhoneAlt className="w-6 h-6 text-textRed" />
                 </div>
                 <div>
                   <span className="block text-gray-700 font-medium">
@@ -148,7 +148,7 @@ const ContactSection = () => {
                   </span>
                   <a
                     href="tel:+918588851572"
-                    className="text-red-500 text-lg font-bold"
+                    className="text-textRed text-lg font-bold"
                   >
                     8588851572
                   </a>
@@ -156,7 +156,7 @@ const ContactSection = () => {
               </div>
               <div className="flex items-start space-x-4">
                 <div className="p-3 bg-red-100 rounded-full">
-                  <FaLocationDot className="w-6 h-6 text-red-500" />
+                  <FaLocationDot className="w-6 h-6 text-textRed" />
                 </div>
                 <div>
                   <span className="block text-gray-700 font-medium">

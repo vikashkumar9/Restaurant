@@ -90,7 +90,7 @@ const MealsFooter = () => {
                 <div className="flex items-center space-x-4">
                   {/* Icon */}
                   <div className="p-3 bg-red-100 rounded-full">
-                    <MdOutlineMailOutline className="w-6 h-6 text-red-500" />
+                    <MdOutlineMailOutline className="w-6 h-6 text-textRed" />
                   </div>
 
                   <div>
@@ -99,7 +99,7 @@ const MealsFooter = () => {
                     </span>
                     <a
                       href="mailto:vikashparjapati59@gmail.com"
-                      className="block text-red-500 text-l font-bold"
+                      className="block text-textRed text-l font-bold"
                     >
                       vikashparjapati59@gmail.com
                     </a>
@@ -117,7 +117,7 @@ const MealsFooter = () => {
                     </span>
                     <a
                       href="tel:+919306075344"
-                      className="text-red-500 text-lg font-bold"
+                      className="text-textRed text-lg font-bold"
                     >
                       9306075344
                     </a>

@@ -42,11 +42,11 @@ const Header = () => {
           height={50}
           className="rounded-full"
         />
-        <h1 className="ml-4 font-bold text-yellow-500">
+        <h1 className="ml-4 font-bold text-textRed">
           {user ? user.name : "APP"}
         </h1>
       </div>
-      <nav className="lg:space-x-4 lg:text-2xl text-yellow-500">
+      <nav className="lg:space-x-4 lg:text-2xl text-textRed">
         <Link href="/" className="hover:underline pr-2">
           Home
         </Link>
@@ -66,7 +66,7 @@ const Header = () => {
           <>
             <button
               onClick={logOut}
-              className="hover:underline pr-2 bg-transparent border-none text-yellow-500 cursor-pointer"
+              className="hover:underline pr-2 bg-transparent border-none text-textRed cursor-pointer"
             >
               Log Out
             </button>

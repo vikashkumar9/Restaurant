@@ -46,14 +46,14 @@ console.log(pathname)
           className="rounded-full"
         />
         {user ? (
-          <h1 className="ml-4 font-bold text-yellow-500 md:flex hidden">
+          <h1 className="ml-4 font-bold text-textRed md:flex hidden">
             {user.name}
           </h1>
         ) : (
-          <h1 className="ml-4 font-bold text-yellow-500 md:flex hidden">APP</h1>
+          <h1 className="ml-4 font-bold text-textRed md:flex hidden">APP</h1>
         )}
       </div>
-      <nav className="lg:space-x-4 lg:text-2xl text-yellow-500">
+      <nav className="lg:space-x-4 lg:text-2xl text-textRed">
         <Link href="/" className="hover:underline pr-2">
           Home
         </Link>

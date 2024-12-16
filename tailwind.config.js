@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       colors: {
         customYellow: "#fcb900",
-        textRed: "#ff3131",
+        textRed: "#ff611d",
         footerBgColor: "#ebebf1",
         dropdownColor: "#f2f2f2",
       },
