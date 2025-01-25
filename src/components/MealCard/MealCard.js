@@ -2,37 +2,27 @@
 
 import Image from "next/image";
 import Button from "../ui/Button";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { Context } from "../Cartcontext/UserContext";
 
 function MealCard({ meals }) {
-  const cartdata = JSON.parse(localStorage.getItem("cartdata"));
-  var data;
-  if (cartdata) {
-    data = cartdata;
-  } else {
-    data = [];
-  }
+  const { cartitems, setcartitems } = useContext(Context);
 
-  const [cartitems, setcartitems] = useState(data);
-
-  const addtocart = (item) => {
-    setcartitems(() => {
-      if (cartitems.find((c) => c._id === item._id)) {
-        return cartitems.map((c) =>
+  const addToCart = (item) => {
+    setcartitems((prevCartItems) => {
+      if (prevCartItems.find((c) => c._id === item._id)) {
+        return prevCartItems.map((c) =>
           c._id === item._id ? { ...c, quantity: c.quantity + 1 } : c
         );
       } else {
-        return [...cartitems, item];
+        return [...prevCartItems, { ...item, quantity: 1 }];
       }
     });
   };
-  useEffect(() => {
-    localStorage.setItem("cartdata", JSON.stringify(cartitems));
-  }, [cartitems]);
 
   return (
-    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
-      {meals ? (
+    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {meals && meals.length > 0 ? (
         meals.map((meal) => (
           <div
             key={meal._id}
@@ -57,12 +47,13 @@ function MealCard({ meals }) {
               <p className="text-blue-600 text-xl font-bold">₹{meal.price}</p>
             </div>
             <div className="m-1">
-            <Button
-              className="w-full  bg-orange-500 text-white py-2 rounded-lg"
-              onClick={() => addtocart(meal)}
-            >
-              Add to cart
-            </Button></div>
+              <Button
+                className="w-full bg-orange-500 text-white py-2 rounded-lg"
+                onClick={() => addToCart(meal)}
+              >
+                Add to cart
+              </Button>
+            </div>
           </div>
         ))
       ) : (
@@ -71,4 +62,5 @@ function MealCard({ meals }) {
     </div>
   );
 }
+
 export default MealCard;

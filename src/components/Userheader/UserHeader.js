@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useContext } from "react";
+import { Context } from "../Cartcontext/UserContext";
 const UserHeader = () => {
+  const { cartitems } = useContext(Context);
   const [user, setUser] = useState(null);
   const router = useRouter();
   const pathname = usePathname();
@@ -67,7 +69,7 @@ console.log(pathname)
           </a>
         )}
         <Link href="/cart" className="hover:underline pr-2">
-          Cart
+          Cart({cartitems.length})
         </Link>
        
         <Link href="/restaurent/addmeals" className="hover:underline">

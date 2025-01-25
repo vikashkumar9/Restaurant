@@ -73,13 +73,13 @@ export default function Home() {
 
           <input
             type="text"
-            placeholder="Search meal and restaurant"
+            placeholder="Search restaurant"
             className="border rounded-r p-2 bg-white text-black focus:outline-none  sm:w-1/2"
             onChange={(e) => setSearchName(e.target.value)}
           />
         </div>
       </div>
-      <h1 className="text-4xl font-bold text-center text-white my-6">Restaurents</h1>
+      <h1 className="text-4xl font-bold text-center text-white my-6">Restaurants</h1>
 
       <div className="m-4">
         <Restaurent restaurent={restaurantData} />
