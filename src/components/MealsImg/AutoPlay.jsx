@@ -6,9 +6,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 function AutoPlay({ meals }) {
   const settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     speed: 2000,
@@ -27,9 +27,8 @@ function AutoPlay({ meals }) {
                 alt="image"
                 height={200}
                 width={200}
-                className="border border-whitesmoke rounded-full"
+                className="border shadow-sm  rounded-[50%] h:16 w-16 md:h-48 md:w-52"
               />
-              <h3>{meal.name}</h3>
             </div>
           ))}
       </Slider>

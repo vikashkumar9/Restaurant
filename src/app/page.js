@@ -4,6 +4,7 @@ import UserHeader from "@/components/Userheader/UserHeader";
 import Restaurent from "@/components/Restaurents/Restaurent";
 import MealsFooter from "@/components/Footer/MealsFooter";
 import RestaurantTrust from "@/components/Restaurents/RestaurentTrust";
+import Menu from "@/components/Menu";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -46,7 +47,7 @@ export default function Home() {
     getCities();
   }, []);
   return (
-    <main>
+    <main className="bg-gray-900">
       <UserHeader />
       <div className="bg-[url('/loginbg.jpeg')] bg-cover bg-center h-[200px] md:h-[400px] w-full flex items-center justify-center">
         <div className="flex   md:flex-row items-center w-full max-w-4xl p-4 justify-center text-black">
@@ -78,9 +79,12 @@ export default function Home() {
           />
         </div>
       </div>
+      <h1 className="text-4xl font-bold text-center text-white my-6">Restaurents</h1>
+
       <div className="m-4">
         <Restaurent restaurent={restaurantData} />
       </div>
+      <Menu/>
       <RestaurantTrust />
       <MealsFooter />
     </main>

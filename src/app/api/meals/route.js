@@ -21,7 +21,7 @@ export async function GET(req, res) {
   try {
     await connectToDatabase();
     const result = await Product.find();
-    return NextResponse.json({ result }, { status: 200 });
+    return NextResponse.json(result , { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { message: "Failed to retrieve products", error },

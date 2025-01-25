@@ -27,7 +27,7 @@ const Restaurent = ({ params }) => {
   }, [id]);
 
   return (
-    <div className="bg-white">
+    <div className="bg-gray-900">
       <UserHeader />
       <div className="bg-[url('/loginbg.jpeg')] bg-cover bg-center h-[200px] md:h-[400px] flex items-center justify-center">
         <h1 className="text-4xl font-bold text-gray-900">
@@ -37,7 +37,9 @@ const Restaurent = ({ params }) => {
       <div className="my-4">
         <Restaurentdetails resto={productData?.restaurent} />
       </div>
+      <div className='pl-10 pr-10'>
       <AutoPlay meals={productData?.meals || []} />
+      </div>
       <div className=" m-8">
         <MealCard meals={productData?.meals || []} />
       </div>

@@ -49,13 +49,7 @@ const ContactSection = () => {
       <div className="px-4 py-8 bg-gray-50">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="my-4 text-5xl text-black font-bold">Contact Us</h2>
-          <h3 className="my-4 text-2xl text-black hidden md:block">
-            Reach Out to Paydhara
-          </h3>
-          <p className="text-gray-700 text-base font-normal hidden md:block">
-            For inquiries or assistance, our dedicated support team is here to
-            help. Get in touch with us:
-          </p>
+         
         </div>
       </div>
       <div className="px-6 py-10 bg-gray-100">
@@ -131,10 +125,10 @@ const ContactSection = () => {
                 <div>
                   <span className="block text-gray-700 font-medium">Email</span>
                   <a
-                    href="mailto:help@paydhara.com"
+                    href="mailto:vikashparjapati59@gmail.com"
                     className="block text-textRed text-lg font-bold"
                   >
-                    help@paydhara.com
+                   vikashparjapati59@gmail
                   </a>
                 </div>
               </div>
@@ -147,10 +141,10 @@ const ContactSection = () => {
                     Customer Support
                   </span>
                   <a
-                    href="tel:+918588851572"
+                    href="tel:+919306075344"
                     className="text-textRed text-lg font-bold"
                   >
-                    8588851572
+                    9306075344
                   </a>
                 </div>
               </div>
@@ -164,7 +158,7 @@ const ContactSection = () => {
                   </span>
                   <p className="text-gray-900 text-base">
                     7X Fintech Pvt Limited, DCB 620, DLF CYBERCITY, Infocity,
-                    Patia, Bhubaneswar, Odisha - 751024
+                    jhajjar - 751024
                   </p>
                 </div>
               </div>

@@ -8,8 +8,8 @@ const MealsFooter = () => {
   return (
     <>
       <div className="bg-footerBgColor text-black mt-4 md:mt-8 py-12 md:py-20  ">
-        <div className="container mx-auto px-8 grid grid-cols-1 gap-8  md:grid-cols-4 md:gap-8">
-          {/* About Section */}
+        <div className="container mx-auto px-8 grid grid-cols-1   md:grid-cols-4 md:gap-8">
+         
           <div>
             <img
               src="https://w7.pngwing.com/pngs/224/1014/png-transparent-my-new-restaurant-logo-bistro-cafe-ermita-conrad-manila-restaurant-restaurant-logo-food-text-logo.png"

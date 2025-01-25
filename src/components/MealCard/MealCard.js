@@ -31,7 +31,7 @@ function MealCard({ meals }) {
   }, [cartitems]);
 
   return (
-    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
       {meals ? (
         meals.map((meal) => (
           <div
@@ -41,27 +41,28 @@ function MealCard({ meals }) {
             <div className="relative">
               <Image
                 width={100}
-                height={100}
+                height={50}
                 src={"/" + meal.image}
                 alt={meal.name}
-                className="w-full h-64 object-cover"
+                className="w-full h-48 object-cover"
               />
               <div className="absolute top-4 left-4 bg-black bg-opacity-75 text-white text-sm py-1 px-2 rounded">
                 {meal.category}
               </div>
             </div>
-            <div className="p-4 text-center flex justify-between items-center">
+            <div className="p-2 text-center flex justify-between items-center">
               <h2 className="text-lg font-semibold text-gray-800">
                 {meal.name}
               </h2>
               <p className="text-blue-600 text-xl font-bold">₹{meal.price}</p>
             </div>
+            <div className="m-1">
             <Button
-              className="w-full bg-orange-500 text-white py-2 rounded-lg"
+              className="w-full  bg-orange-500 text-white py-2 rounded-lg"
               onClick={() => addtocart(meal)}
             >
               Add to cart
-            </Button>
+            </Button></div>
           </div>
         ))
       ) : (
