@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { Context } from "../Cartcontext/UserContext";
 
 function MealCard({ meals }) {
-  const { cartitems, setcartitems } = useContext(Context);
+  const {  setcartitems } = useContext(Context);
 
   const addToCart = (item) => {
     setcartitems((prevCartItems) => {

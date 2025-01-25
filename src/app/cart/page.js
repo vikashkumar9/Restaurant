@@ -1,4 +1,5 @@
 "use client";
+
 import UserHeader from "@/components/Userheader/UserHeader";
 import React, { useEffect, useState, useContext } from "react";
 import MealsFooter from "@/components/Footer/MealsFooter";
@@ -12,19 +13,23 @@ const Cart = () => {
   const { setcartitems } = useContext(Context);
 
   useEffect(() => {
-    const storedCartData = localStorage.getItem("cartdata");
-    if (storedCartData) {
-      const parsedCartData = JSON.parse(storedCartData);
-      setCartData(parsedCartData);
-      setcartitems(parsedCartData); 
+    if (typeof window !== "undefined") {
+      const storedCartData = localStorage.getItem("cartdata");
+      if (storedCartData) {
+        const parsedCartData = JSON.parse(storedCartData);
+        setCartData(parsedCartData);
+        setcartitems(parsedCartData);
+      }
     }
   }, []);
 
   const deleteItem = (itemId) => {
     const updatedCart = cartdata.filter((item) => item._id !== itemId);
     setCartData(updatedCart);
-    setcartitems(updatedCart); // Update context value.
-    localStorage.setItem("cartdata", JSON.stringify(updatedCart));
+    setcartitems(updatedCart);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cartdata", JSON.stringify(updatedCart));
+    }
   };
 
   const totalcost = cartdata.reduce(
