@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import MealForm from "@/components/mealsform/MealForm";
@@ -18,27 +18,34 @@ const UpdateData = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-    let userdata = null;
+  const [restoUserId, setRestoUserId] = useState(null);
 
-    if (typeof window !== "undefined") {
-      userdata = JSON.parse(localStorage.getItem("restaurant_user"));
-    }
-
-    const getData = async () => {
-      try {
-        if (userdata && userdata._id) {
-          const productData = await fetch(`/api/products/${userdata._id}`);
-          const results = await productData.json();
-          setProductsData(results.result);
-        }
-      } catch (error) {
-        console.error("Error fetching product data:", error);
+  const getData = useCallback(async () => {
+    try {
+      if (restoUserId) {
+        const productData = await fetch(`/api/products/${restoUserId}`);
+        const results = await productData.json();
+        setProductsData(results.result);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+    }
+  }, [restoUserId]);
 
-    getData();
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const userdata = JSON.parse(localStorage.getItem("restaurant_user"));
+      if (userdata && userdata._id) {
+        setRestoUserId(userdata._id);
+      }
+    }
   }, []);
+
+  useEffect(() => {
+    if (restoUserId) {
+      getData();
+    }
+  }, [restoUserId, getData]);
 
   const uniqueMeal = async (id) => {
     const response = await fetch(`/api/meals/${id}`);

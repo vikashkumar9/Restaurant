@@ -7,17 +7,20 @@ import { useRouter } from "next/navigation";
 import MealsFooter from "@/components/Footer/MealsFooter";
 import UserHeader from "@/components/Userheader/UserHeader";
 import { MdEmail, MdLock, MdLogin } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      setLoading(true);
       let response = await fetch("/api/userLogin", {
         method: "POST",
         headers: {
@@ -36,14 +39,18 @@ const Login = () => {
         const { result } = response;
         delete result.password;
         localStorage.setItem("user", JSON.stringify(result));
+        toast.success("Logged in successfully");
         router.push("/");
       } else {
         setError(response.message || "Login failed");
-        alert("fail");
+        toast.error(response.message || "Login failed");
       }
     } catch (err) {
       setError("An error occurred");
       console.error(err);
+      toast.error("An error occurred");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -78,6 +85,8 @@ const Login = () => {
           <Button
             type="submit"
             leadingIcon={MdLogin}
+            loading={loading}
+            disabled={loading}
           >
             Login
           </Button>

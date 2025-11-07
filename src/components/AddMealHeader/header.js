@@ -42,22 +42,22 @@ const Header = () => {
           height={50}
           className="rounded-full"
         />
-        <h1 className="ml-4 font-bold text-textRed">
+        <h1 className=" ml-2 md:ml-4 font-bold text-textRed">
           {user ? user.name : "APP"}
         </h1>
       </div>
-      <nav className="lg:space-x-4 lg:text-xl text-black">
-        <Link href="/" className="hover:underline pr-2">
+      <nav className=" lg:space-x-4 text-sm lg:text-xl text-black">
+        <Link href="/" className="hover:underline pr-1 md:pr-2">
           Home
         </Link>
         {!user ? (
           <>
-            <Link href="/restaurent/login" className="hover:underline pr-2">
+            <Link href="/restaurent/login" className="hover:underline pr-1 md:pr-2">
               Sign In
             </Link>
             <Link
               href="/restaurent/registration"
-              className="hover:underline pr-2"
+              className="hover:underline pr-1 md:pr-2"
             >
               Sign Up
             </Link>
@@ -73,7 +73,7 @@ const Header = () => {
 
             <Link
               href="/restaurent/addmeals/editdata"
-              className="pr-2 hover:underline"
+              className="pr-1 md:pr-2 hover:underline"
             >
               All Meals
             </Link>

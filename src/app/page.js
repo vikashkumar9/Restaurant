@@ -154,9 +154,26 @@ const HomeStructuredSections = ({ featuredFilter, setFeaturedFilter, onAddToCart
     : featuredMeals;
   return (
     <section className="px-4 md:px-8 lg:px-12 py-8 space-y-10">
+      <div className="space-y-4">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Browse by Category</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {categories.map(({ id, label, icon: Icon }) => (
+            <button
+              key={id}
+              onClick={() => setFeaturedFilter(id)}
+              className="bg-white rounded-lg p-4 shadow hover:shadow-lg transition flex items-center gap-3 text-left"
+            >
+              <div className="p-3 rounded-full bg-gray-100 text-gray-700">
+                <Icon className="h-6 w-6" />
+              </div>
+              <div className="text-gray-900 font-semibold">{label}</div>
+            </button>
+          ))}
+        </div>
+      </div>
       {/* Featured Meals */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between">
+<div className="flex flex-col sm:flex-col md:flex-row items-center justify-between">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Featured Meals</h2>
           <div className="flex items-center gap-2">
             <button
@@ -206,23 +223,7 @@ const HomeStructuredSections = ({ featuredFilter, setFeaturedFilter, onAddToCart
       </div>
 
       {/* Categories */}
-      <div className="space-y-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Browse by Category</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {categories.map(({ id, label, icon: Icon }) => (
-            <button
-              key={id}
-              onClick={() => setFeaturedFilter(id)}
-              className="bg-white rounded-lg p-4 shadow hover:shadow-lg transition flex items-center gap-3 text-left"
-            >
-              <div className="p-3 rounded-full bg-gray-100 text-gray-700">
-                <Icon className="h-6 w-6" />
-              </div>
-              <div className="text-gray-900 font-semibold">{label}</div>
-            </button>
-          ))}
-        </div>
-      </div>
+      
 
       {/* Offers */}
       <div className="space-y-4">
