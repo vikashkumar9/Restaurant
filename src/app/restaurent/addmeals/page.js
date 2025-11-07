@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Button from "@/components/ui/Button";
 import MealForm from "@/components/mealsform/MealForm";
 import MealsFooter from "@/components/Footer/MealsFooter";
+import { MdAddCircle } from "react-icons/md";
 
 const AddMeal = () => {
   const [mealName, setMealName] = useState("");
@@ -59,7 +60,7 @@ const AddMeal = () => {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen px-4 pt-4">
+      <div className="flex items-center justify-center min-h-screen px-4 bg-white pt-4">
         <form
           onSubmit={handleSubmit}
           className="w-full max-w-sm bg-white shadow-lg rounded-lg p-6 space-y-4"
@@ -82,7 +83,7 @@ const AddMeal = () => {
           />
           <Button
             type="submit"
-            className="w-full py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75"
+            leadingIcon={MdAddCircle}
           >
             Add Meal
           </Button>

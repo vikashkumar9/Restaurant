@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import MealsFooter from "@/components/Footer/MealsFooter";
 import UserHeader from "@/components/Userheader/UserHeader";
+import { MdEmail, MdLock, MdLogin } from "react-icons/md";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -49,10 +50,10 @@ const Login = () => {
   return (
     <div>
        <UserHeader/>
-      <div className="flex items-center justify-center min-h-screen px-4">
+      <div className="flex items-center justify-center min-h-screen bg-white px-4">
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-sm sm:max-w-md min-w-[300px] p-6 bg-white shadow-md rounded-lg"
+          className="w-full max-w-sm sm:max-w-md min-w-[300px] p-6 bg-white shadow-lg rounded-lg"
         >
           <h2 className="mb-4 text-2xl font-bold text-center text-black">
             Login
@@ -64,6 +65,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            leftIcon={MdEmail}
           />
           <Input
             label="Password"
@@ -71,10 +73,11 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            leftIcon={MdLock}
           />
           <Button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-yellow-500 rounded hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300"
+            leadingIcon={MdLogin}
           >
             Login
           </Button>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import MealForm from "@/components/mealsform/MealForm";
 import Button from "@/components/ui/Button";
 import MealsFooter from "@/components/Footer/MealsFooter";
+import { MdSave, MdCancel, MdEdit, MdDelete } from "react-icons/md";
 
 const UpdateData = () => {
   const [productsData, setProductsData] = useState([]);
@@ -20,7 +21,6 @@ const UpdateData = () => {
   useEffect(() => {
     let userdata = null;
 
-    // Check if `window` exists to safely access `localStorage`
     if (typeof window !== "undefined") {
       userdata = JSON.parse(localStorage.getItem("restaurant_user"));
     }
@@ -101,7 +101,7 @@ const UpdateData = () => {
   return (
     <>
       {isModalOpen && (
-        <div className="fixed py-4 inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed py-4 inset-0 z-50 flex  items-center justify-center bg-white bg-opacity-50">
           <form
             onSubmit={handleSubmit}
             className="w-full max-w-sm bg-white shadow-lg rounded-lg p-6 space-y-4"
@@ -121,13 +121,16 @@ const UpdateData = () => {
             />
             <Button
               type="submit"
-              className="w-full py-2 px-4 bg-yellow-500 text-white font-semibold rounded-lg shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-75"
+              className="w-full"
+              leadingIcon={MdSave}
             >
               Update
             </Button>
             <Button
               onClick={closeModal}
-              className="w-full py-2 px-4 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-75 mt-4"
+              className="w-full mt-4"
+              variant="danger"
+              leadingIcon={MdCancel}
             >
               Cancel
             </Button>
@@ -172,6 +175,7 @@ const UpdateData = () => {
                       <Button
                         onClick={() => uniqueMeal(product._id)}
                         className="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded-lg"
+                        leadingIcon={MdEdit}
                       >
                         Edit
                       </Button>
@@ -179,8 +183,9 @@ const UpdateData = () => {
                     <td className="px-4 py-2">
                       <button
                         onClick={() => deleteHandler(product._id)}
-                        className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-lg"
+                        className="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-lg"
                       >
+                        <MdDelete className="h-4 w-4" />
                         Delete
                       </button>
                     </td>

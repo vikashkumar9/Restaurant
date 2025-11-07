@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { MdOutlineMailOutline } from "react-icons/md";
+import { MdOutlineMailOutline, MdDescription, MdPerson } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import UserHeader from "@/components/Userheader/UserHeader";
 import MealsFooter from "@/components/Footer/MealsFooter";
+import Input from "@/components/ui/Input";
+import Textarea from "@/components/ui/Textarea";
 
 const ContactSection = () => {
   const [result, setResult] = useState("");
@@ -62,44 +64,33 @@ const ContactSection = () => {
               <div className="text-center text-blue-500">Submitting...</div>
             )}
             <form onSubmit={onSubmit}>
-              <div className="mb-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  maxLength="35"
-                  aria-label="Enter your full name"
-                  className="w-full bg-white border border-textRed rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
-                />
-              </div>
-              <div className="mb-4">
-                <input
-                  type="text"
-                  name="mobile_number"
-                  placeholder="Mobile Number"
-                  maxLength="10"
-                  aria-label="Enter your mobile number"
-                  className="w-full bg-white border border-textRed rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
-                />
-              </div>
-              <div className="mb-4">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  aria-label="Enter your email address"
-                  className="w-full bg-white border border-textRed rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
-                />
-              </div>
-              <div className="mb-4">
-                <textarea
-                  name="message"
-                  placeholder="Message"
-                  rows="6"
-                  aria-label="Enter your message"
-                  className="w-full bg-white border border-textRed rounded-md px-4 py-2 text-lg text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-none"
-                />
-              </div>
+              <Input
+                type="text"
+                name="name"
+                placeholder="Name"
+                leftIcon={MdPerson}
+                helperText=""
+              />
+              <Input
+                type="text"
+                name="mobile_number"
+                placeholder="Mobile Number"
+                leftIcon={FaPhoneAlt}
+                helperText=""
+              />
+              <Input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                leftIcon={MdOutlineMailOutline}
+                helperText=""
+              />
+              <Textarea
+                name="message"
+                placeholder="Message"
+                rows={6}
+                leftIcon={MdDescription}
+              />
               <div>
                 <button
                   type="submit"

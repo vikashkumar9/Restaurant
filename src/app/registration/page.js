@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import MealsFooter from "@/components/Footer/MealsFooter";
 import UserHeader from "@/components/Userheader/UserHeader";
+import { MdPerson, MdEmail, MdLock, MdLocationOn, MdLocationCity, MdPhone, MdAppRegistration } from "react-icons/md";
 
 const Registration = () => {
   const [name, setName] = useState("");
@@ -60,10 +61,10 @@ console.log("user", name,
   return (
     <div>
         <UserHeader/>
-      <div className="flex items-center justify-center min-h-screen p-4">
+      <div className="flex items-center justify-center min-h-screen bg-white p-4">
         <form
           onSubmit={handleSubmit}
-          className="w-full max-w-sm sm:max-w-md min-w-[300px] p-6 bg-white shadow-md rounded-lg"
+          className="w-full max-w-sm sm:max-w-md min-w-[300px] p-6 bg-white shadow-lg rounded-lg"
         >
           <h2 className="mb-4 text-2xl font-bold text-center text-black">
             Registration
@@ -75,6 +76,7 @@ console.log("user", name,
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            leftIcon={MdPerson}
           />
           <Input
             label="Email Address"
@@ -82,6 +84,7 @@ console.log("user", name,
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            leftIcon={MdEmail}
           />
           <Input
             label="Password"
@@ -89,6 +92,7 @@ console.log("user", name,
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            leftIcon={MdLock}
           />
           <Input
             label="Location"
@@ -96,6 +100,7 @@ console.log("user", name,
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             required
+            leftIcon={MdLocationOn}
           />
           <Input
             label="City"
@@ -103,6 +108,7 @@ console.log("user", name,
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
+            leftIcon={MdLocationCity}
           />
           <Input
             label="Contact No"
@@ -110,10 +116,11 @@ console.log("user", name,
             value={contact}
             onChange={(e) => setContact(e.target.value)}
             required
+            leftIcon={MdPhone}
           />
           <Button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-yellow-500 rounded hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300"
+            leadingIcon={MdAppRegistration}
           >
             Register
           </Button>

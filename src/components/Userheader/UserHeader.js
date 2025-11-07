@@ -55,7 +55,7 @@ console.log(pathname)
           <h1 className="ml-4 font-bold text-textRed md:flex hidden">APP</h1>
         )}
       </div>
-      <nav className="lg:space-x-4 lg:text-2xl text-textRed">
+      <nav className="lg:space-x-4 lg:text-xl text-black">
         <Link href="/" className="hover:underline pr-2">
           Home
         </Link>

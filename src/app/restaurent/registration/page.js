@@ -5,6 +5,7 @@ import Button from "@/components/ui/Button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import MealsFooter from "@/components/Footer/MealsFooter";
+import { MdPerson, MdEmail, MdLock, MdLocationOn, MdLocationCity, MdPhone, MdAppRegistration } from "react-icons/md";
 
 const Registration = () => {
   const [name, setName] = useState("");
@@ -53,7 +54,7 @@ const Registration = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center min-h-screen px-4">
+      <div className="flex items-center justify-center bg-white min-h-screen px-4">
         <form
           onSubmit={handleSubmit}
           className="w-full max-w-sm sm:max-w-md min-w-[300px] p-6 bg-white shadow-md rounded-lg"
@@ -68,6 +69,7 @@ const Registration = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            leftIcon={MdPerson}
           />
           <Input
             label="Email Address"
@@ -75,6 +77,7 @@ const Registration = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            leftIcon={MdEmail}
           />
           <Input
             label="Password"
@@ -82,6 +85,7 @@ const Registration = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            leftIcon={MdLock}
           />
           <Input
             label="Location"
@@ -89,6 +93,7 @@ const Registration = () => {
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             required
+            leftIcon={MdLocationOn}
           />
           <Input
             label="City"
@@ -96,6 +101,7 @@ const Registration = () => {
             value={city}
             onChange={(e) => setCity(e.target.value)}
             required
+            leftIcon={MdLocationCity}
           />
           <Input
             label="Contact No"
@@ -103,10 +109,11 @@ const Registration = () => {
             value={contact}
             onChange={(e) => setContact(e.target.value)}
             required
+            leftIcon={MdPhone}
           />
           <Button
             type="submit"
-            className="w-full px-4 py-2 text-white bg-yellow-500 rounded hover:bg-yellow-600 focus:outline-none focus:ring focus:ring-yellow-300"
+            leadingIcon={MdAppRegistration}
           >
             Register
           </Button>
