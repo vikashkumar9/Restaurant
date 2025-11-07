@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 const Restaurent = ({ restaurent }) => {
   const router = useRouter();
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 md:px-6 gap-4 ">
       {restaurent &&
         restaurent.map((item, index) => (
           <div

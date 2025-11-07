@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { Context } from "../Cartcontext/UserContext";
 
 function MealCard({ meals }) {
-  const {  setcartitems } = useContext(Context);
+  const { setcartitems } = useContext(Context);
 
   const addToCart = (item) => {
     setcartitems((prevCartItems) => {
@@ -26,8 +26,9 @@ function MealCard({ meals }) {
         meals.map((meal) => (
           <div
             key={meal._id}
-            className="max-w-lg mx-auto bg-white rounded-lg shadow-md overflow-hidden"
+            className="w-full bg-white rounded-lg shadow-md overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300"
           >
+            {/* Image Section */}
             <div className="relative">
               <Image
                 width={100}
@@ -36,19 +37,23 @@ function MealCard({ meals }) {
                 alt={meal.name}
                 className="w-full h-48 object-cover"
               />
-              <div className="absolute top-4 left-4 bg-black bg-opacity-75 text-white text-sm py-1 px-2 rounded">
+              <div className="absolute top-4 left-4 bg-black bg-opacity-70 text-white text-xs py-1 px-3 rounded-full">
                 {meal.category}
               </div>
             </div>
-            <div className="p-2 text-center flex justify-between items-center">
+
+            {/* Title + Price */}
+            <div className="p-3 flex justify-between items-center flex-grow">
               <h2 className="text-lg font-semibold text-gray-800">
                 {meal.name}
               </h2>
-              <p className="text-blue-600 text-xl font-bold">₹{meal.price}</p>
+              <p className="text-orange-600 text-xl font-bold">₹{meal.price}</p>
             </div>
-            <div className="m-1">
+
+            {/* Add to cart */}
+            <div className="p-3">
               <Button
-                className="w-full bg-orange-500 text-white py-2 rounded-lg"
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg transition-colors"
                 onClick={() => addToCart(meal)}
               >
                 Add to cart

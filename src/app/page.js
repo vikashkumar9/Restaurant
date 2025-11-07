@@ -222,10 +222,7 @@ const HomeStructuredSections = ({ featuredFilter, setFeaturedFilter, onAddToCart
         </div>
       </div>
 
-      {/* Categories */}
       
-
-      {/* Offers */}
       <div className="space-y-4">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Latest Offers</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
